@@ -14,3 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/quiz',function(){
+    return view('front.quiz.index');
+});
