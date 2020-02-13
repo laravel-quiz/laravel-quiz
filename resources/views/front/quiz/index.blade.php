@@ -47,7 +47,8 @@ $(document).ready(function(){
         $('#question').text(questions[index].question);
         //output += `<br><input type="radio" name="answers" value="${questions[index].correct_answer}"><label>${questions[index].correct_answer}</label><br>`
         value.forEach(function(d){
-            output += `<br><input type="radio" name="answers" value="${d}"><label>${d}</label>`
+            //output += `<br><input type="radio" name="answers" value="${d}"><label>${d}</label>`
+            output += `<div align="center" style="margin:2px;"><button class="block" value="${d}">${d}</button></div>`
         });
         $('#question').append(output);
         // $('#quiz').append(output);

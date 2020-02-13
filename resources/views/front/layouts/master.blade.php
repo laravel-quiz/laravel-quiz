@@ -64,6 +64,28 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+
+
+            .block {
+                display: block;
+                width: 60%;
+                border: none;
+                background-color: #ddd;
+                color: white;
+                padding: 14px 10px;
+                font-size: 30px;
+                color: black;
+                cursor: pointer;
+                text-align: center;
+                border-radius: 15px;
+                height: 70px;
+                }
+
+                .block:hover {
+                background-color: #ddd;
+                border: solid black 2px;
+                color: black;
+                }
         </style>
 
         
