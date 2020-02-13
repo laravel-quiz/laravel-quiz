@@ -27,25 +27,44 @@ $(document).ready(function(){
     });
 
      $.get('https://cors-anywhere.herokuapp.com/https://opentdb.com/api.php?amount=10',function(data){
-        console.log(data);
+        //console.log(data);
         var results = data.results;
 
         var output = '';
         var questions = new Array();
+        var i =0;
         results.forEach(function(quiz){
             questions.push(quiz);
+            questions[i].incorrect_answers.push(quiz.correct_answer);
+            i++;
             //output += `<h3> ${quiz.question} </h3>`;
         });
         console.log(questions);
         var value = questions[index].incorrect_answers;
+        console.log(value);
+        value = shuffle(value);
+        console.log(value);
         $('#question').text(questions[index].question);
-        output += `<br><input type="radio" name="answers" value="${questions[index].correct_answer}"><label>${questions[index].correct_answer}</label><br>`
+        //output += `<br><input type="radio" name="answers" value="${questions[index].correct_answer}"><label>${questions[index].correct_answer}</label><br>`
         value.forEach(function(d){
-            output += `<input type="radio" name="answers" value="${d}"><label>${d}</label><br>`
+            output += `<br><input type="radio" name="answers" value="${d}"><label>${d}</label>`
         });
         $('#question').append(output);
         // $('#quiz').append(output);
      });
+
+
+
+     function shuffle(a) {
+        var j, x, i;
+        for (i = a.length - 1; i > 0; i--) {
+            j = Math.floor(Math.random() * (i + 1));
+            x = a[i];
+            a[i] = a[j];
+            a[j] = x;
+        }
+        return a;
+    }
 
     // var url = 'https://cors-anywhere.herokuapp.com/https://opentdb.com/api.php?amount=10';
     // fetch(url, {
