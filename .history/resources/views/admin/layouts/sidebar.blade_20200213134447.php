@@ -10,22 +10,21 @@
                         </a>
                     </li>
                     <li>
-                        <a class="has-arrow" href="{{ route('questionanswer') }}" aria-expanded="false">
+                        <a class="has-arrow" href="" aria-expanded="false">
                             <i class="icon-envelope menu-icon"></i> <span class="nav-text">Question</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href=" {{ route('questionanswer.create') }} ">Add Question</a></li>
-                            <li><a href=" {{ route('questionanswer') }} ">Manage Question</a></li>
-
+                            <li><a href="">Add Question</a></li>
+                            <li><a href="">Manage Question</a></li>
                         </ul>
                     </li>
                     <li>
-                        <a class="has-arrow" href=" {{ route('questionincorrectanswer') }} " aria-expanded="false">
-                            <i class="icon-envelope menu-icon"></i> <span class="nav-text">InAnswer</span>
+                        <a class="has-arrow" href="" aria-expanded="false">
+                            <i class="icon-envelope menu-icon"></i> <span class="nav-text">Answer</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href=" {{ route('questionincorrectanswer.create') }} ">Add InAnswer</a></li>
-                            <li><a href="{{ route('questionincorrectanswer') }} ">Manage INAnswer</a></li>
+                            <li><a href="">Add Answer</a></li>
+                            <li><a href="">Manage Answer</a></li>
                         </ul>
                     </li>
                 </ul>
