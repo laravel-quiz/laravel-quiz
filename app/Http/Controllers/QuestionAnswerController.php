@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Category;
+use App\Quiz;
 
 class QuestionAnswerController extends Controller
 {
@@ -23,7 +25,8 @@ class QuestionAnswerController extends Controller
      */
     public function create()
     {
-        return view('admin.questionanswer.create');
+        $categories = Category::all();
+        return view('admin.questionanswer.create', compact('categories'));
     }
 
     /**
@@ -34,6 +37,8 @@ class QuestionAnswerController extends Controller
      */
     public function store(Request $request)
     {
+        dd($request);
+        
 
     }
 

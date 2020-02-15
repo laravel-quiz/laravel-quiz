@@ -14,7 +14,7 @@
                                     <form class="form-valide" action="" method="POST" enctype="multipart/form-data">
                                         @csrf
                                         <div class="form-group row">
-                                            <label class="col-lg-4 col-form-label" for="val-name">Question Name</span>
+                                            <label class="col-lg-4 col-form-label" for="val-name">Question:</span>
                                             </label>
                                             <div class="col-lg-6">
                                                 <input type="text" class="form-control" id="val-name" name="question" placeholder="Enter Question">
