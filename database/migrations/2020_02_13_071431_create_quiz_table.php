@@ -15,13 +15,14 @@ class CreateQuizTable extends Migration
     {
         Schema::create('quiz', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('category');
-            $table->string('type');
-            $table->string('difficulty');
+            $table->unsignedBigInteger('category_id');
+            $table->string('type')->nullable();
+            $table->string('difficulty')->nullable();
             $table->string('question');
             $table->string('correct_answer');
             
             $table->timestamps();
+            $table->foreign('category_id')->references('id')->on('category');
         });
     }
 

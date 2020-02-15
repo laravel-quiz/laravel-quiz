@@ -11,21 +11,39 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="form-validation">
-                                    <form class="form-valide" action="" method="POST" enctype="multipart/form-data">
+                                    <form class="form-valide" action="{{route('quiz.store')}}" method="POST" >
                                         @csrf
                                         <div class="form-group row">
-                                            <label class="col-lg-4 col-form-label" for="val-name">Question Name</span>
+                                            <label class="col-lg-4 col-form-label" for="val-name">Question</span>
                                             </label>
                                             <div class="col-lg-6">
                                                 <input type="text" class="form-control" id="val-name" name="question" placeholder="Enter Question">
                                             </div>
                                         </div>
-
                                         <div class="form-group row">
-                                            <label class="col-lg-4 col-form-label" for="val-name">Question Answer</span>
+                                            <label class="col-lg-4 col-form-label">Category</span>
                                             </label>
                                             <div class="col-lg-6">
-                                                <input type="text" class="form-control" id="val-name" name="answer" placeholder="Enter Question Answer">
+                                            <select class="form-control" name="category_id">
+                                            @foreach($categories as $category)
+                                                <option value="{{$category->id}}">{{$category->name}}</optioon>
+                                            @endforeach
+                                            </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label class="col-lg-4 col-form-label" for="val-name">Correct Answer</span>
+                                            </label>
+                                            <div class="col-lg-6">
+                                                <input type="text" class="form-control" id="val-name" name="correct_answer" placeholder="Enter Question Answer">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-lg-4 col-form-label" for="val-name">Incorrect Answers</span>
+                                            </label>
+                                            <div class="col-lg-6">
+                                                <input type="text" class="form-control" id="val-name" name="incorrect_answer" placeholder="Enter any 3 seperated by commma ','">
                                             </div>
                                         </div>
                                         <div class="form-group row">
