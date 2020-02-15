@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Category;
 use App\Quiz;
+use App\IncorrectAnswer;
 
 class QuestionAnswerController extends Controller
 {
@@ -37,7 +38,24 @@ class QuestionAnswerController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
+        $temp = explode(',',$request->incorrect_answer);
+        $incorrect_answers = array_map('trim',$temp);
+        //dd($incorrect_answers);
+        $quiz = new Quiz();
+        $quiz->category_id = $request->category_id;
+        $quiz->question = $request->question;
+        $quiz->correct_answer = $request->correct_answer;
+        $quiz->save();
+    
+        foreach($incorrect_answers as $ia){
+            echo $ia;
+            $incorrectanswer = new IncorrectAnswer(['answer'=> $ia]);
+            $quiz->incorrectanswers()->save($incorrectanswer);
+        }
+
+
+        return 'done i guess';
+        
         
 
     }

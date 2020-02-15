@@ -16,8 +16,8 @@ class CreateQuizTable extends Migration
         Schema::create('quiz', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('category_id');
-            $table->string('type');
-            $table->string('difficulty');
+            $table->string('type')->nullable();
+            $table->string('difficulty')->nullable();
             $table->string('question');
             $table->string('correct_answer');
             
