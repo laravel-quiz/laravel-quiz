@@ -15,6 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
 Route::get('/admindashoard','AdminController@index');
 
 Route::get('/questionanswer','QuestionAnswerController@index')->name('questionanswer');
@@ -26,3 +27,6 @@ Route::get('/questionincorrectanswer','QuestionIncorrectAnswerController@index')
 Route::get('/questionincorrectanswer/create','QuestionIncorrectAnswerController@create')->name('questionincorrectanswer.create');
 Route::get('/questionincorrectanswer/edit','QuestionIncorrectAnswerController@edit')->name('questionincorrectanswer.edit');
 Route::get('/questionincorrectanswer/show','QuestionIncorrectAnswerController@show')->name('questionincorrectanswer.show');
+
+Route::get('/quiz','QuizController@index')->name('quiz.index');
+
