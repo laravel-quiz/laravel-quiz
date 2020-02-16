@@ -20,6 +20,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('/quiz/all',function(){
-    $quizs = Quiz::get();
+    $quizs = Quiz::get()->random(3);
     return QuizResource::collection($quizs);
 });

@@ -27,9 +27,10 @@ $(document).ready(function(){
     });
 
      //$.get('https://cors-anywhere.herokuapp.com/https://opentdb.com/api.php?amount=10',function(data){
-        $.get("{{route('quiz.all')}}",function(data){
+        $.get("/api/quiz/all",function(data){
         console.log(data);
-        var results = data.results;
+        //var results = data.results;
+        var results = data;
 
         var output = '';
         var questions = new Array();
