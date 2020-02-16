@@ -26,8 +26,9 @@ $(document).ready(function(){
         }
     });
 
-     $.get('https://cors-anywhere.herokuapp.com/https://opentdb.com/api.php?amount=10',function(data){
-        //console.log(data);
+     //$.get('https://cors-anywhere.herokuapp.com/https://opentdb.com/api.php?amount=10',function(data){
+        $.get("{{route('quiz.all')}}",function(data){
+        console.log(data);
         var results = data.results;
 
         var output = '';
