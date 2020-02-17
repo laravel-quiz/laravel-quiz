@@ -8,6 +8,7 @@
                 </div>
                 <div class="row">
                     <div id="scorediv">
+                    <h1 id="timer"></h1>
                     <h2 id="score"></h2>
                     </div>
                 </div>
@@ -25,6 +26,7 @@
 <script type="text/javascript">
 $(document).ready(function(){
     var questions = new Array();
+    var counter = 30;
     var score = 0;
     var index = 0;
      $.ajaxSetup({
@@ -63,6 +65,7 @@ $(document).ready(function(){
             output += `<div align="center" style="margin:2px;"><button class="block" value="${d}" onClick="verify('${d}','${questions[index].correct_answer}');">${d}</button></div>`
         });
         $('#question').append(output);
+        timer();
         // $('#quiz').append(output);
      });
 
@@ -75,6 +78,7 @@ $(document).ready(function(){
      }
 
      updateScreen = function(){
+        timer = 30;
         var output = '';
         $('#score').text('Score:'+ score);
         console.log(questions[index]);
@@ -92,11 +96,17 @@ $(document).ready(function(){
         $('#question').append(output);
      }
 
-    //  interval = function(){
-    //      setInterval(function(){
-    //         $('#score').text('Score:'+ score);
-    //      },1000);
-    //  }
+     timer = function(){
+         setInterval(function(){
+            $('#timer').text(counter);
+            counter--;
+            if(counter<=0){
+                index++;
+                clearInterval(timer);
+                updateScreen();
+            }
+         },1000);
+     }
 
 
 
