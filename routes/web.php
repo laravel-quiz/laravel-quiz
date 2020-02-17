@@ -34,4 +34,5 @@ Route::prefix('/admin')->group(function(){
 
 
 Route::get('/quiz','QuizController@index')->name('quiz.index');
+//Route::get('/quiz/all','QuizController@getAll')->name('quiz.all');
 
