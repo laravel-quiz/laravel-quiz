@@ -31,8 +31,7 @@ Route::prefix('/admin')->group(function(){
     Route::get('/questionincorrectanswer/show','QuestionIncorrectAnswerController@show')->name('questionincorrectanswer.show');
 
     Route::group(['middleware' => ['auth','role']], function () {
-        Route::get('admin/home','AdminController@index')->name('admin.home');
-        Route::get('home','QuizController@index')->name('quiz.index');
+        Route:get('admin/home','AdminController@index')->name('admin.home');
         Route::get('admin/homes','HomeController@adminHome')->name('admin.homes')->middleware('role');
         Route::get('/admin/user','UserController@index')->name('admin.user');
         Route::get('/admin/user/register','UserController@create')->name('admin.user.register');

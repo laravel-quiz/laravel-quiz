@@ -50,7 +50,7 @@ class LoginController extends Controller
 
         if(Auth()->attempt(array('email' => $input['email'],'password' => $input['password'])))
         {
-            if(Auth()->user()->role->name == 'superadmin' || Auth()->user()->role->name == "admin")
+            if(Auth()->user()->role->name == 'superadmin')
             {
                 return redirect()->route('admin.home');
             }
