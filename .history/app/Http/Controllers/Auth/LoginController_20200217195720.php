@@ -4,8 +4,6 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
@@ -43,18 +41,12 @@ class LoginController extends Controller
     {
         $input = $request->all();
 
-        if(Auth()->attempt(array('email' => $input['email'],'password' => $input['password'])))
+        if(Auth()->attemp(array('email' => $input['email'],'password' => $input['password'])))
         {
             if(Auth()->user()->role->name == 'superadmin' || Auth()->user()->role->name == 'admin')
             {
-                return redirect()->route('admin.index');
+                return redirect()->route('admin.home');
             }
-            else{
-                return redirect()->route('quiz.index');
-            }
-        }
-        else{
-            return redirect()->route('login')->with('error','incorrect email or password');
         }
     }
 }

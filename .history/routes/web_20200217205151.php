@@ -17,6 +17,11 @@ Route::get('/', function () {
 
 
 
+
+
+
+
+
 Route::get('/quiz','QuizController@index')->name('quiz.index');
 //Route::get('/quiz/all','QuizController@getAll')->name('quiz.all');
 
@@ -29,7 +34,7 @@ Route::group(['middleware' => ['auth','role']], function () {
 	
     
     Route::get('/admin/dashboard','AdminController@index')->name('admin.index');
-
+    
     Route::prefix('/admin')->group(function(){
         Route::get('/questionanswer','QuestionAnswerController@index')->name('questionanswer');
         Route::get('/questionanswer/create','QuestionAnswerController@create')->name('questionanswer.create');

@@ -43,14 +43,14 @@ class LoginController extends Controller
     {
         $input = $request->all();
 
-        if(Auth()->attempt(array('email' => $input['email'],'password' => $input['password'])))
+        if(Auth()->attemp(array('email' => $input['email'],'password' => $input['password'])))
         {
             if(Auth()->user()->role->name == 'superadmin' || Auth()->user()->role->name == 'admin')
             {
                 return redirect()->route('admin.index');
             }
             else{
-                return redirect()->route('quiz.index');
+                return redirect()->route('home');
             }
         }
         else{
