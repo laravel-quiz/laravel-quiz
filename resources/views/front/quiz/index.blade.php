@@ -9,7 +9,7 @@
                 <div class="row">
                     <div id="scorediv">
                     <h1 id="timer"></h1>
-                    <h2 id="score"></h2>
+                    <h2 id="question_no"></h2><h2 id="score"></h2>
                     </div>
                 </div>
                 <div id="quiz">
@@ -26,7 +26,8 @@
 <script type="text/javascript">
 $(document).ready(function(){
     var questions = new Array();
-    var counter = 30;
+    var question_no = 0;
+    var counter = 10;
     var score = 0;
     var index = 0;
      $.ajaxSetup({
@@ -44,7 +45,7 @@ $(document).ready(function(){
         var results = data;
 
         var output = '';
-        
+
         var i =0;
         results.forEach(function(quiz){
             questions.push(quiz);
@@ -52,40 +53,34 @@ $(document).ready(function(){
             i++;
             //output += `<h3> ${quiz.question} </h3>`;
         });
-        console.log(questions[index]);
-        var value = questions[index].incorrect_answers;
-        console.log(value);
-        value = shuffle(value);
-        console.log(value);
-        $('#question').text(questions[index].question);
-        //output += `<br><input type="radio" name="answers" value="${questions[index].correct_answer}"><label>${questions[index].correct_answer}</label><br>`
-        value.forEach(function(d){
-            //output += `<br><input type="radio" name="answers" value="${d}"><label>${d}</label>`
-            //output += `<div align="center" style="margin:2px;"><button class="block" value="${d}" onClick="verify(${d},${questions[index].correct_answer});">${d}</button></div>`
-            output += `<div align="center" style="margin:2px;"><button class="block" value="${d}" onClick="verify('${d}','${questions[index].correct_answer}');">${d}</button></div>`
-        });
-        $('#question').append(output);
-        timer();
-        // $('#quiz').append(output);
+        updateScreen();
+
      });
 
      verify = function(userAnswer,correctAnswer){
+
          if(userAnswer == correctAnswer){
             score++;
+            index++;
+            updateScreen();
+         }
+         else
+         {
             index++;
             updateScreen();
          }
      }
 
      updateScreen = function(){
-        timer = 30;
+        question_no++;
+        counter = 10;
         var output = '';
         $('#score').text('Score:'+ score);
-        console.log(questions[index]);
+        //console.log('question',questions[index]);
         var value = questions[index].incorrect_answers;
-        console.log(value);
+        //console.log('incorrect_answer',value);
         value = shuffle(value);
-        console.log(value);
+        //console.log('suffled answers',value);
         $('#question').text(questions[index].question);
         //output += `<br><input type="radio" name="answers" value="${questions[index].correct_answer}"><label>${questions[index].correct_answer}</label><br>`
         value.forEach(function(d){
@@ -96,17 +91,24 @@ $(document).ready(function(){
         $('#question').append(output);
      }
 
-     timer = function(){
-         setInterval(function(){
+
+         timer=setInterval(function(){
+            $('#question_no').text(question_no);
             $('#timer').text(counter);
             counter--;
-            if(counter<=0){
+            //console.log(chance.unique(chance.natural, 8, {min: 1, max: 100}))
+            if(counter<0){
                 index++;
-                clearInterval(timer);
                 updateScreen();
+                console.log($('#question_no').text());
+                if($('#question_no').text() >= 2)
+                {
+                    console.log('finish');
+                    clearInterval(timer);
+                }
             }
          },1000);
-     }
+
 
 
 
@@ -130,9 +132,9 @@ $(document).ready(function(){
     // }).then(res => res.json())
     // .then(response => console.log('Success:', response))
     // .catch(error => console.error('Error:', error));
-    
 
-    
+
+
 });
 
 </script>
