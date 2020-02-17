@@ -11,13 +11,14 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="form-validation">
-                                    <form class="form-valide" action="{{route('questionanswer.store')}}" method="POST" >
+                                    <form class="form-valide" action="{{ route('questionanswer',['id'=>$questionanswer->id]) }}" method="POST" enctype="multipart/form-data">
                                         @csrf
+                                        @method('PUT')
                                         <div class="form-group row">
                                             <label class="col-lg-4 col-form-label" for="val-name">Question</span>
                                             </label>
                                             <div class="col-lg-6">
-                                                <input type="text" class="form-control" id="val-name" name="question" placeholder="Enter Question">
+                                                <input type="text" class="form-control" id="val-name" name="question" value="{{ $questionanswer->question }}" placeholder="Enter Question">
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -26,7 +27,7 @@
                                             <div class="col-lg-6">
                                             <select class="form-control" name="category_id">
                                             @foreach($categories as $category)
-                                                <option value="{{$category->id}}">{{$category->name}}</optioon>
+                                                <option value="{{ $category->id }}" {{(old('category_id',$questionanswer->category_id)==$category->id) ? 'selected':''}}>{{$category->name}}</optioon>
                                             @endforeach
                                             </select>
                                             </div>
@@ -36,14 +37,21 @@
                                             <label class="col-lg-4 col-form-label" for="val-name">Correct Answer</span>
                                             </label>
                                             <div class="col-lg-6">
-                                                <input type="text" class="form-control" id="val-name" name="correct_answer" placeholder="Enter Question Answer">
+                                                <input type="text" class="form-control" id="val-name" name="correct_answer" value="{{ $questionanswer->correct_answer }}" placeholder="Enter Question Answer">
                                             </div>
                                         </div>
+                                        @php
+                                            $temp ='';
+                                            foreach ($incorrectanswer as $item)
+                                            {
+                                                $temp = $temp.','.$item->answer;
+                                            }
+                                        @endphp
                                         <div class="form-group row">
                                             <label class="col-lg-4 col-form-label" for="val-name">Incorrect Answers</span>
                                             </label>
                                             <div class="col-lg-6">
-                                                <input type="text" class="form-control" id="val-name" name="incorrect_answer" placeholder="Enter any 3 seperated by commma ','">
+                                                <input type="text" class="form-control" id="val-name" name="incorrect_answer" value="{{ ltrim($temp,",") }}" placeholder="Enter any 3 seperated by commma ','">
                                             </div>
                                         </div>
                                         <div class="form-group row">

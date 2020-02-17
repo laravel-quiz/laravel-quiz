@@ -20,12 +20,12 @@
                         </ul>
                     </li>
                     <li>
-                        <a class="has-arrow" href=" {{ route('questionincorrectanswer') }} " aria-expanded="false">
+                        <a class="has-arrow" href=" {{ route('incorrectanswer') }} " aria-expanded="false">
                             <i class="icon-envelope menu-icon"></i> <span class="nav-text">InAnswer</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href=" {{ route('questionincorrectanswer.create') }} ">Add InAnswer</a></li>
-                            <li><a href="{{ route('questionincorrectanswer') }} ">Manage INAnswer</a></li>
+                            <li><a href=" {{ route('incorrectanswer.create') }} ">Add InAnswer</a></li>
+                            <li><a href="{{ route('incorrectanswer') }} ">Manage InAnswer</a></li>
                         </ul>
                     </li>
                 </ul>
