@@ -19,7 +19,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($users as $user)
+
                                         <tr>
                                             <td></td>
                                             <td><a href=""></a></td>
@@ -33,7 +33,7 @@
                                                 </form>
                                             </td>
                                         </tr>
-                                    @endforeach
+
                                 </tbody>
                             </table>
                         </div>
