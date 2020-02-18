@@ -30,7 +30,7 @@ Route::prefix('/admin')->group(function(){
 
     Route::get('/incorrectanswer','IncorrectAnswerController@index')->name('incorrectanswer');
     Route::get('/incorrectanswer/create','IncorrectAnswerController@create')->name('incorrectanswer.create');
-    Route::post('/incorrectanswer/store','IncorrectAnswerController@store')->name('incorrectanswer.store');
+    Route::post('/incorrectanswer/store','IncorrectAnswerController@create')->name('incorrectanswer.create');
     Route::get('/incorrectanswer/{id}/edit','IncorrectAnswerController@edit')->name('incorrectanswer.edit');
     Route::put('/incorrectanswer/{id}','IncorrectAnswerController@update')->name('incorrectanswer.update');
     Route::get('/incorrectanswer/{id}','IncorrectAnswerController@show')->name('incorrectanswer.show');
