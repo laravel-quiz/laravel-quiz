@@ -17,6 +17,9 @@
                     <div id="answers">
                     </div>
                 </div>
+                <div id="replay">
+                    <a href="{{route('quiz.index')}}">Play Again?</>
+                </div>
             </div>
 @endsection
 
@@ -25,6 +28,7 @@
 <script src="{{ asset('/js/jquery-3.4.1.min.js') }}"></script>
 <script type="text/javascript">
 $(document).ready(function(){
+    $('#replay').hide();
     var questions = new Array();
     var counter = 30;
     var score = 0;
@@ -35,7 +39,7 @@ $(document).ready(function(){
         }
     });
 
-    $('#score').text('Score:'+ score);
+    //$('#score').text('Score:'+ score);
 
      //$.get('https://cors-anywhere.herokuapp.com/https://opentdb.com/api.php?amount=10',function(data){
         $.get("/api/quiz/all",function(data){
@@ -71,16 +75,25 @@ $(document).ready(function(){
 
      verify = function(userAnswer,correctAnswer){
          if(userAnswer == correctAnswer){
-            score++;
-            index++;
-            updateScreen();
+            
+            score++; 
          }
+         index++;
+         updateScreen();
      }
 
      updateScreen = function(){
+        
         counter = 30;
         var output = '';
-        $('#score').text('Score:'+ score);
+        //$('#score').text('Score:'+ score);
+        if(index>=4){
+            $('#score').text('Your final Score: '+ score + ' out of ' + index);
+            $('#question').hide();
+            clearInterval(timer);
+            $('#timer').hide();
+            $('#replay').show();
+        }
         console.log(questions[index]);
         var value = questions[index].incorrect_answers;
         console.log(value);
@@ -93,7 +106,9 @@ $(document).ready(function(){
             //output += `<div align="center" style="margin:2px;"><button class="block" value="${d}" onClick="verify(${d},${questions[index].correct_answer});">${d}</button></div>`
             output += `<div align="center" style="margin:2px;"><button class="block" value="${d}" onClick="verify('${d}','${questions[index].correct_answer}');">${d}</button></div>`
         });
+        
         $('#question').append(output);
+        
      }
 
      timer = function(){
