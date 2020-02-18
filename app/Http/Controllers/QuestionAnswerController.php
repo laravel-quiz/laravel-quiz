@@ -16,7 +16,8 @@ class QuestionAnswerController extends Controller
      */
     public function index()
     {
-        return view('admin.questionanswer.index');
+        $quizes = Quiz::get();
+        return view('admin.questionanswer.index',compact('quizes'));
     }
 
     /**
@@ -46,17 +47,13 @@ class QuestionAnswerController extends Controller
         $quiz->question = $request->question;
         $quiz->correct_answer = $request->correct_answer;
         $quiz->save();
-    
         foreach($incorrect_answers as $ia){
-            echo $ia;
             $incorrectanswer = new IncorrectAnswer(['answer'=> $ia]);
             $quiz->incorrectanswers()->save($incorrectanswer);
         }
+        return redirect()->route('questionanswer');
 
 
-        return 'done i guess';
-        
-        
 
     }
 
@@ -79,7 +76,10 @@ class QuestionAnswerController extends Controller
      */
     public function edit($id)
     {
-        return view('admin.questionanswer.edit');
+        $categories = Category::all();
+        $questionanswer = Quiz::findOrfail($id);
+        $incorrectanswer = IncorrectAnswer::where('quiz_id',$id)->get();
+        return view('admin.questionanswer.edit',compact('categories','questionanswer','incorrectanswer'));
     }
 
     /**
@@ -91,7 +91,19 @@ class QuestionAnswerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $temp = explode(',',$request->incorrect_answer);
+        $incorrect_answers = array_map('trim',$temp);
+        //dd($incorrect_answers);
+        $quiz = Quiz::findOrfail($id);
+        $quiz->category_id = $request->category_id;
+        $quiz->question = $request->question;
+        $quiz->correct_answer = $request->correct_answer;
+        $quiz->save();
+        foreach($incorrect_answers as $ia){
+            $incorrectanswer = new IncorrectAnswer(['answer'=> $ia]);
+            $quiz->incorrectanswers()->save($incorrectanswer);
+        }
+        return redirect()->route('questionanswer');
     }
 
     /**
@@ -102,6 +114,8 @@ class QuestionAnswerController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $quiz = Quiz::findOrfail($id);
+        $quiz->delete();
+        return redirect()->route('questionanswer');
     }
 }

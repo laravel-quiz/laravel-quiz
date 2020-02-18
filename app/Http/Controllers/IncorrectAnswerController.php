@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\IncorrectAnswer;
+use App\Quiz;
 
-class QuestionIncorrectAnswerController extends Controller
+class IncorrectAnswerController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +15,8 @@ class QuestionIncorrectAnswerController extends Controller
      */
     public function index()
     {
-        return view('admin.incorrectanswer.index');
+        $incorrectans = IncorrectAnswer::get();
+        return view('admin.incorrectanswer.index',compact('incorrectans'));
     }
 
     /**
@@ -23,7 +26,8 @@ class QuestionIncorrectAnswerController extends Controller
      */
     public function create()
     {
-        return view('admin.incorrectanswer.create');
+        $quizes = Quiz::get();
+        return view('admin.incorrectanswer.create',compact('quizes'));
     }
 
     /**
@@ -34,7 +38,11 @@ class QuestionIncorrectAnswerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $quiz = new IncorrectAnswer();
+        $quiz->answer = $request->answer;
+        $quiz->quiz_id = $request->quiz_id;
+        $quiz->save();
+        return redirect()->route('incorrectanswer');
     }
 
     /**
@@ -56,7 +64,9 @@ class QuestionIncorrectAnswerController extends Controller
      */
     public function edit($id)
     {
-        return view("admin.incorrectanswer.edit");
+        $incorrectans = IncorrectAnswer::findOrfail($id);
+        $quizes = Quiz::get();
+        return view("admin.incorrectanswer.edit",compact('incorrectans','quizes'));
     }
 
     /**
@@ -68,7 +78,11 @@ class QuestionIncorrectAnswerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $quiz = IncorrectAnswer::findOrfail($id);
+        $quiz->answer = $request->answer;
+        $quiz->quiz_id = $request->quiz_id;
+        $quiz->save();
+        return redirect()->route('incorrectanswer');
     }
 
     /**
@@ -79,6 +93,8 @@ class QuestionIncorrectAnswerController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $incorrectans = IncorrectAnswer::findOrfail($id);
+        $incorrectans->delete();
+        return redirect()->route('incorrectanswer');
     }
 }
