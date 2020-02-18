@@ -50,7 +50,7 @@ class LoginController extends Controller
                 return redirect()->route('admin.index');
             }
             else{
-                return redirect()->route('quiz.index');
+                return redirect()->route('home');
             }
         }
         else{
