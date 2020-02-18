@@ -78,7 +78,7 @@ $(document).ready(function(){
      }
 
      updateScreen = function(){
-        timer = 30;
+        counter = 30;
         var output = '';
         $('#score').text('Score:'+ score);
         console.log(questions[index]);
@@ -102,7 +102,7 @@ $(document).ready(function(){
             counter--;
             if(counter<=0){
                 index++;
-                clearInterval(timer);
+                //clearInterval(timer);
                 updateScreen();
             }
          },1000);
