@@ -102,7 +102,7 @@
                 }
                 .tryagain {
                 display: block;
-                width: 20%;
+                width: 30%;
                 border: none;
                 background-color: #ddd;
                 color: white;
@@ -113,7 +113,7 @@
                 cursor: pointer;
                 text-align: center;
                 border-radius: 15px;
-                height: 60px;
+                height: 50px;
                 }
 
                 .tryagain:hover {

@@ -100,27 +100,6 @@
                 border: solid black 2px;
                 color: black;
                 }
-                .tryagain {
-                display: block;
-                width: 20%;
-                border: none;
-                background-color: #ddd;
-                color: white;
-                /* padding: 14px 10px; */
-                margin: 10px;
-                font-size: 30px;
-                color: black;
-                cursor: pointer;
-                text-align: center;
-                border-radius: 15px;
-                height: 60px;
-                }
-
-                .tryagain:hover {
-                background-color: #ddd;
-                border: solid black 2px;
-                color: black;
-                }
         </style>
 
 

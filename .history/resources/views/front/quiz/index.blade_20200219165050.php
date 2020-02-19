@@ -7,9 +7,8 @@
                     <img src="{{asset('/images/quiz.png')}}" class="img-responsive">
                 </div>
                 <div class="row justify-content-center">
-                    <div  id="scorediv">
-                        <h1 style="float:left;">Time Out In :</h1>&nbsp;&nbsp;
-                    <h1 id="timer" style="float:right;"></h1>
+                    <div id="scorediv">
+                    <h1 id="timer"></h1>
 
                     </div>
                 </div>
@@ -22,8 +21,8 @@
 
                     </div>
 
-                <div id="replay" align="center">
-                    <a href="{{route('quiz.index')}}" style="text-decoration: none;"><button class="tryagain">Play Again?<img src="{{asset('/images/try_again.png')}}" height="50px" width="50px"></button></>
+                <div id="replay">
+                    <a href="{{route('quiz.index')}}"><button class="tryagain">Play Again?</button></>
                 </div>
             </div>
 @endsection
