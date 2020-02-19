@@ -13,6 +13,7 @@
                     </div>
                 </div>
                 <div id="quiz">
+                    <h1 id="question_no"></h1>
                     <h1 id="question"></h1>
                     <div id="answers">
                     </div>
@@ -30,6 +31,7 @@
 $(document).ready(function(){
     $('#replay').hide();
     var questions = new Array();
+    var question_no = 1;
     var counter = 30;
     var score = 0;
     var index = 0;
@@ -56,21 +58,9 @@ $(document).ready(function(){
             i++;
             //output += `<h3> ${quiz.question} </h3>`;
         });
-        console.log(questions[index]);
-        var value = questions[index].incorrect_answers;
-        console.log(value);
-        value = shuffle(value);
-        console.log(value);
-        $('#question').text(questions[index].question);
-        //output += `<br><input type="radio" name="answers" value="${questions[index].correct_answer}"><label>${questions[index].correct_answer}</label><br>`
-        value.forEach(function(d){
-            //output += `<br><input type="radio" name="answers" value="${d}"><label>${d}</label>`
-            //output += `<div align="center" style="margin:2px;"><button class="block" value="${d}" onClick="verify(${d},${questions[index].correct_answer});">${d}</button></div>`
-            output += `<div align="center" style="margin:2px;"><button class="block" value="${d}" onClick="verify('${d}','${questions[index].correct_answer}');">${d}</button></div>`
-        });
-        $('#question').append(output);
-        timer();
-        // $('#quiz').append(output);
+        
+        updateScreen();
+        
      });
 
      verify = function(userAnswer,correctAnswer){
@@ -99,6 +89,8 @@ $(document).ready(function(){
         console.log(value);
         value = shuffle(value);
         console.log(value);
+        $('#question_no').text(question_no);
+        question_no++;
         $('#question').text(questions[index].question);
         //output += `<br><input type="radio" name="answers" value="${questions[index].correct_answer}"><label>${questions[index].correct_answer}</label><br>`
         value.forEach(function(d){
@@ -111,7 +103,7 @@ $(document).ready(function(){
         
      }
 
-     timer = function(){
+     timer = 
          setInterval(function(){
             $('#timer').text(counter);
             counter--;
@@ -121,7 +113,7 @@ $(document).ready(function(){
                 updateScreen();
             }
          },1000);
-     }
+     
 
 
 
