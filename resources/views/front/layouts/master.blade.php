@@ -86,6 +86,9 @@
                 border: solid black 2px;
                 color: black;
                 }
+                /* *{
+                    border:1px solid black;
+                } */
         </style>
 
         
