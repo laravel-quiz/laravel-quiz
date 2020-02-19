@@ -88,6 +88,7 @@ $(document).ready(function(){
              $('#col3').hide();
             $('#answers').hide();
             clearInterval(timer);
+            $('#scorediv').hide();
             $('#timer').hide();
             $('#replay').show();
         }
