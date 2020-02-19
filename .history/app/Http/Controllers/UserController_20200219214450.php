@@ -81,7 +81,10 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        
+        if(Gate::denies('edit-user'))
+        {
+            return redirect(route(users.index));
+        }
         $user = User::findOrfail($id);
         return view('admin.users.show',compact('user'));
     }
@@ -94,10 +97,6 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-            if(Gate::denies('edit-user'))
-            {
-                return redirect(route('users.index'));
-            }
             $user = User::findOrfail($id);
             $roles = Role::get();
             return view('admin.users.edit',compact('user','roles'));
@@ -112,10 +111,6 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        if(Gate::denies('edit-user'))
-            {
-                return redirect(route('users.index'));
-            }
         $user = User::findOrFail($id);
         $request->validate([
             'name' => ['required', 'string', 'max:50'],
@@ -158,10 +153,6 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        if(Gate::denies('edit-user'))
-            {
-                return redirect(route('users.index'));
-            }
         $user = User::findOrFail($id);
         $img_path = public_path('images/users/'.$user->image);
         $img_avatar_path = public_path('images/users/avatar/'.$user->image);

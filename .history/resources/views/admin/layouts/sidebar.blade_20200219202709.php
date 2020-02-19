@@ -9,17 +9,17 @@
                             <i class="icon-home menu-icon"></i><span class="nav-text">Dashboard</span>
                         </a>
                     </li>
-                    
+                    @can('create-user')
                     <li>
                         <a class="has-arrow" href="{{ route('users.index') }}" aria-expanded="false">
                             <i class="icon-user menu-icon"></i> <span class="nav-text">User</span>
                         </a>
                         <ul aria-expanded="false">
-                            @can('create-user')<li><a href="{{ route('users.create') }}">Add User</a></li>@endcan
+                            <li><a href="{{ route('users.create') }}">Add User</a></li>
                             <li><a href="{{ route('users.index') }}">Manage User</a></li>
                         </ul>
                     </li>
-                    
+                    @endcan
                     <li>
                         <a class="has-arrow" href="{{ route('questionanswer') }}" aria-expanded="false">
                             <i class="icon-question menu-icon"></i> <span class="nav-text">Question</span>

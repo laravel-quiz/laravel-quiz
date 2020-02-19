@@ -17,9 +17,7 @@
                                         <th scope="col">Name</th>
                                         <th scope="col">Email</th>
                                         <th scope="col">Role</th>
-                                        @can('edit-user')
                                         <th scope="col">Action</th>
-                                        @endcan
                                     </tr>
                                 </thead>
                                 <tbody>
