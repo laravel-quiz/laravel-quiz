@@ -8,7 +8,7 @@
             <div class="container-fluid">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Incorrect Answer Info</h4>
+                        <h4 class="card-title">Users Info</h4>
                         <div class="table-responsive">
                             <table class="table table-bordered verticle-middle">
                                 <thead>

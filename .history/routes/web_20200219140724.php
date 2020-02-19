@@ -45,13 +45,13 @@ Route::middleware(['auth','role'])->prefix('/admin')->group(function(){
     Route::get('/incorrectanswer/{id}','IncorrectAnswerController@show')->name('incorrectanswer.show');
     Route::delete('/incorrectanswer/{id}','IncorrectAnswerController@destroy')->name('incorrectanswer.destroy');
 
-    Route::get('/category','CategoryController@index')->name('category');
-    Route::get('/category/create','CategoryController@create')->name('category.create');
-    Route::post('/category/store','CategoryController@store')->name('category.store');
-    Route::get('/category/{id}/edit','CategoryController@edit')->name('category.edit');
-    Route::put('/category/{id}','CategoryController@update')->name('category.update');
-    Route::get('/category/{id}','CategoryController@show')->name('category.show');
-    Route::delete('/category/{id}','CategoryController@destroy')->name('category.destroy');
+    Route::get('/category','CategoryController@index')->name('incorrectanswer');
+    Route::get('/category/create','CategoryController@create')->name('incorrectanswer.create');
+    Route::post('/category/store','CategoryController@store')->name('incorrectanswer.store');
+    Route::get('/category/{id}/edit','CategoryController@edit')->name('incorrectanswer.edit');
+    Route::put('/category/{id}','CategoryController@update')->name('incorrectanswer.update');
+    Route::get('/category/{id}','CategoryController@show')->name('incorrectanswer.show');
+    Route::delete('/category/{id}','CategoryController@destroy')->name('incorrectanswer.destroy');
 });
 
 Route::get('/quiz','QuizController@index')->name('quiz.index');
