@@ -15,7 +15,7 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         // 'App\Model' => 'App\Policies\ModelPolicy',
-        User::class => UserPolicy::class,
+        User::class => 'App\Policies\UserPolicy',
     ];
 
     /**
@@ -28,7 +28,5 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
 
         Gate::define('create-user','App\Policies\UserPolicy@Create');
-        Gate::define('edit-user','App\Policies\UserPolicy@update');
-        Gate::define('delete-user','App\Policies\UserPolicy@delete');
     }
 }

@@ -96,7 +96,7 @@ class UserController extends Controller
     {
             if(Gate::denies('edit-user'))
             {
-                return redirect(route('users.index'));
+                return redirect(route(users.index));
             }
             $user = User::findOrfail($id);
             $roles = Role::get();
@@ -112,10 +112,6 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        if(Gate::denies('edit-user'))
-            {
-                return redirect(route('users.index'));
-            }
         $user = User::findOrFail($id);
         $request->validate([
             'name' => ['required', 'string', 'max:50'],
@@ -158,10 +154,6 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        if(Gate::denies('edit-user'))
-            {
-                return redirect(route('users.index'));
-            }
         $user = User::findOrFail($id);
         $img_path = public_path('images/users/'.$user->image);
         $img_avatar_path = public_path('images/users/avatar/'.$user->image);

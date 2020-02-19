@@ -17,9 +17,7 @@
                                         <th scope="col">Name</th>
                                         <th scope="col">Email</th>
                                         <th scope="col">Role</th>
-                                        @can('edit-user')
                                         <th scope="col">Action</th>
-                                        @endcan
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -30,17 +28,13 @@
                                             <td>{{ $user->email }}</td>
                                             <td>{{ $user->role->name }}</td>
                                             <td>
-                                                @can('edit-user')
                                                 {{-- <a href="{{ route('users.create') }}" data-toggle="tooltip" data-placement="top" title="Add"><span class="btn btn-success"><i class="fa fa-plus color-muted m-r-5"></i></span></a> --}}
-                                                <a href="{{ route('users.edit',['id' => $user->id ]) }}" data-toggle="tooltip" data-placement="top" title="Edit" style="float:left; margin-top:3px;"><span class="btn btn-info"><i class="fa fa-pencil color-muted m-r-5"></i></span></a>
-                                                @endcan
-                                                @can('delete-user')
+                                                <a href="{{ route('users.edit',['id' => $user->id ]) }}" data-toggle="tooltip" data-placement="top" title="Edit" style="float:left;"><span class="btn btn-info"><i class="fa fa-pencil color-muted m-r-5"></i></span></a>
                                                 <form method="POST" action="{{ route('users.destory',['id' => $user->id]) }}" style="float:center;">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" onclick="return confirm('Are you sure?')" data-toggle="tooltip" data-placement="top" title="Delete"><span class="btn btn-danger"><i class="fa fa-trash color-muted m-r-5"></i></span></button>
                                                 </form>
-                                                @endcan
                                             </td>
                                         </tr>
                                     @endforeach
