@@ -226,12 +226,10 @@
                                         </li>
 
                                         <hr class="my-2">
-                                        <li><a href="{{ route('logout') }}"
-                                             onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i class="icon-key"></i> <span>{{ __('Logout') }}</span></a>
-                                            <form id="logout-form" action="{{ route('logout') }}" method="POST">
-                                                @csrf
-                                            </form>
+                                        <li>
+                                            <a href="{{route('logout')}}"><i class="icon-lock"></i> <span>Log Out</span></a>
                                         </li>
+                                        <li></li>
                                     </ul>
                                 </div>
                             </div>

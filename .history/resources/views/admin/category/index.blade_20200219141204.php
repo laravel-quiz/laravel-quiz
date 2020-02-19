@@ -8,7 +8,7 @@
             <div class="container-fluid">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Incorrect Answer Info</h4>
+                        <h4 class="card-title">Users Info</h4>
                         <div class="table-responsive">
                             <table class="table table-bordered verticle-middle">
                                 <thead>
@@ -26,9 +26,9 @@
                                             <td>{{ $incorrect->quiz->question }}</td>
                                             <td>{{ $incorrect->answer }}</td>
                                             <td>
-                                                <a href="{{ route('incorrectanswer.create') }}" data-toggle="tooltip" data-placement="top" title="Add"><span class="btn btn-success"><i class="fa fa-plus color-muted m-r-5"></i></span></a>
-                                                <a href="{{ route('incorrectanswer.edit',['id'=>$incorrect->id]) }}" data-toggle="tooltip" data-placement="top" title="Edit"><span class="btn btn-info"><i class="fa fa-pencil color-muted m-r-5"></i></span></a>
-                                                <form method="POST" action="{{ route('incorrectanswer.destroy',['id'=>$incorrect->id]) }}">
+                                                <a href="{{ route('category.create') }}" data-toggle="tooltip" data-placement="top" title="Add"><span class="btn btn-success"><i class="fa fa-plus color-muted m-r-5"></i></span></a>
+                                                <a href="{{ route('category.edit',['id'=>$incorrect->id]) }}" data-toggle="tooltip" data-placement="top" title="Edit"><span class="btn btn-info"><i class="fa fa-pencil color-muted m-r-5"></i></span></a>
+                                                <form method="POST" action="{{ route('category.destroy',['id'=>$incorrect->id]) }}">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" onclick="return confirm('Are you sure?')" data-toggle="tooltip" data-placement="top" title="Delete"><span class="btn btn-danger"><i class="fa fa-trash color-muted m-r-5"></i></span></button>

@@ -39,11 +39,11 @@
                     </li>
                     <li>
                         <a class="has-arrow" href=" {{ route('category') }} " aria-expanded="false">
-                            <i class="fa fa-list-alt menu-icon"></i> <span class="nav-text">Category</span>
+                            <i class="icon-question menu-icon"></i> <span class="nav-text">Category</span>
                         </a>
                         <ul aria-expanded="false">
                             <li><a href=" {{ route('category.create') }} ">Add Category</a></li>
-                            <li><a href="{{ route('category') }} ">Manage Category</a></li>
+                            <li><a href="{{ route('category') }} ">Manage InAnswer</a></li>
                         </ul>
                     </li>
                 </ul>
