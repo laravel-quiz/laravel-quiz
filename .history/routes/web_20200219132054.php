@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+
+
+
 Route::middleware(['auth','role'])->prefix('/admin')->group(function(){
     Route::get('/dashboard','AdminController@index')->name('admin.index');
 
@@ -25,9 +29,6 @@ Route::middleware(['auth','role'])->prefix('/admin')->group(function(){
     Route::get('/user/{id}/edit', 'UserController@edit')->name('users.edit');
     Route::put('/user/{id}', 'UserController@update')->name('users.update');
     Route::delete('/user/{id}', 'UserController@destroy')->name('users.destory');
-
-    Route::get('/change/password', 'ChangePasswordController@create')->name('change.password');
-    Route::post('/change/password/store', 'ChangePasswordController@store')->name('changepassword.store');
 
     Route::get('/questionanswer','QuestionAnswerController@index')->name('questionanswer');
     Route::get('/questionanswer/create','QuestionAnswerController@create')->name('questionanswer.create');
