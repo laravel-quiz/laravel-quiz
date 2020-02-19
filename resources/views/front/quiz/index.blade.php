@@ -58,17 +58,30 @@ $(document).ready(function(){
      });
 
      verify = function(userAnswer,correctAnswer){
-
-         if(userAnswer == correctAnswer){
-            score++;
-            index++;
-            updateScreen();
-         }
-         else
-         {
-            index++;
-            updateScreen();
-         }
+        if(question_no < 2)
+        {
+            //console.log(question_no);
+            if(userAnswer == correctAnswer){
+                score++;
+                index++;
+                updateScreen();
+            }
+            else
+            {
+                index++;
+                updateScreen();
+            }
+        }
+        else
+        {
+            if(userAnswer == correctAnswer){
+                score++;
+                $('#score').text('Score:'+ score);
+            }
+            console.log('finish', 'score =>',score);
+            clearInterval(timer);
+            conformbox(score);
+        }
      }
 
      updateScreen = function(){
@@ -93,24 +106,34 @@ $(document).ready(function(){
 
 
          timer=setInterval(function(){
-            $('#question_no').text(question_no);
+            $('#question_no').text(question_no+'/2');
             $('#timer').text(counter);
             counter--;
             //console.log(chance.unique(chance.natural, 8, {min: 1, max: 100}))
             if(counter<0){
-                index++;
-                updateScreen();
-                console.log($('#question_no').text());
-                if($('#question_no').text() >= 2)
+
+
+                if(question_no >= 2)
                 {
-                    console.log('finish');
+                    console.log('finish', 'score =>',score);
                     clearInterval(timer);
                 }
+                else{
+                    console.log($('#question_no').text());
+                    index++;
+                    updateScreen();
+                }
+
             }
          },1000);
 
 
 
+    function conformbox(s)
+    {
+        var reply=confirm('Your Score is '+s+'\nDo you want to play again ???');
+        return reply;
+    }
 
      function shuffle(a) {
         var j, x, i;
