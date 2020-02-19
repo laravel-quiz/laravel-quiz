@@ -23,7 +23,7 @@
                     </div>
 
                 <div id="replay" align="center">
-                    <a href="{{route('quiz.index')}}" style="text-decoration: none;"><button class="tryagain">Play Again?<img src="{{asset('/images/try_again.png')}}" height="50px" width="50px"></button></>
+                    <a href="{{route('quiz.index')}}" style="text-decoration: none;"><button class="tryagain">Play Again?<img src="{{asset('/images/try_again.png')}}" height="30px" width="30px"></button></>
                 </div>
             </div>
 @endsection
@@ -88,6 +88,7 @@ $(document).ready(function(){
              $('#col3').hide();
             $('#answers').hide();
             clearInterval(timer);
+            $('#scorediv').hide();
             $('#timer').hide();
             $('#replay').show();
         }
