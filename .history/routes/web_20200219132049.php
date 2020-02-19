@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+
+
+
 Route::middleware(['auth','role'])->prefix('/admin')->group(function(){
     Route::get('/dashboard','AdminController@index')->name('admin.index');
 
