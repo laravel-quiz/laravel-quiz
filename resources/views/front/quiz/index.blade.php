@@ -81,7 +81,7 @@ $(document).ready(function(){
         counter = 30;
         var output = '';
         $('#score').text(score);
-        if(index>=4){
+        if(index>=5){
             $('#finalscore').text('Your final Score: '+ score + ' out of ' + index);
             $('#question').hide();
              $('#col1').hide();
