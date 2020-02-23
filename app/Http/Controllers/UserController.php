@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\UsersServices;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
@@ -10,6 +11,7 @@ use App\User;
 use App\Role;
 use Gate;
 
+
 class UserController extends Controller
 {
        /**
@@ -17,10 +19,19 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct(User $user)
+    {
+        $this->user = $user;
+    }
     public function index()
     {
-        $users = User::get();
+        // $users = User::get();
+        // return view('admin.users.index',compact('users'));
+
+        $users = $this->user->get();
         return view('admin.users.index',compact('users'));
+        
     }
 
     /**
@@ -62,7 +73,7 @@ class UserController extends Controller
             $avatar->save(public_path('images/users/avatar/'.$new_name));
             $avatar->save();
         }
-
+            
         $user = new User();
         $user->name = $request->name;
         $user->email = $request->email;
@@ -70,7 +81,8 @@ class UserController extends Controller
         $user->role_id = $request->role_id;
         $user->image = $new_name;
         $user->save();
-        return redirect()->route('users.index');
+        return redirect()->route('users.index')->with('success','User Created successfully');
+      
     }
 
     /**
@@ -147,7 +159,7 @@ class UserController extends Controller
         $user->email = $request->email;
         $user->role_id = $request->role_id;
         $user->save();
-        return redirect()->route('users.index');
+        return redirect()->route('users.index')->with('success','User Updated suceesfully');
     }
 
     /**
@@ -170,7 +182,7 @@ class UserController extends Controller
             unlink($img_path);
             unlink($img_avatar_path);
             $user->delete();
-            return redirect()->route('users.index');
+            return redirect()->route('users.index')->with('success','User Deleted successfully');
         }
     }
 }
