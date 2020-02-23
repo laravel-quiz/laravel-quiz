@@ -14,80 +14,18 @@ class CategoryTableSeeder extends Seeder
     {
         DB::table('category')->insert([
             [
-                'name' => '',
+                'name' => 'All Category',
             ],
             [
-                'name' => '',
+                'name' => 'Science',
             ],
             [
-                'name' => '',
+                'name' => 'Astronomy',
             ],
             [
-                'name' => '',
-            ],
-            [
-                'name' => '',
-            ],
-            [
-                'name' => '',
-            ],
-            [
-                'name' => '',
-            ],
-            [
-                'name' => '',
-            ],
-            [
-                'name' => '',
-            ],
-            [
-                'name' => '',
-            ],
-            [
-                'name' => '',
-            ],
-            [
-                'name' => '',
-            ],
-            [
-                'name' => '',
-            ],
-            [
-                'name' => '',
-            ],
-            [
-                'name' => '',
-            ],
-            [
-                'name' => '',
-            ],
-            [
-                'name' => '',
-            ],
-            [
-                'name' => '',
-            ],
-            [
-                'name' => '',
-            ],
-            [
-                'name' => '',
-            ],
-            [
-                'name' => '',
-            ],
-            [
-                'name' => '',
-            ],
-            [
-                'name' => '',
-            ],
-            [
-                'name' => '',
-            ],
-            [
-                'name' => '',
+                'name' => 'Music',
             ]
+            
             
         ]);
     }
