@@ -60,7 +60,7 @@
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                             </div>
                         </div>
-                        <input type="hidden" name="role_id" value="1">
+                        <input type="hidden" name="role_id" value="3">
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
