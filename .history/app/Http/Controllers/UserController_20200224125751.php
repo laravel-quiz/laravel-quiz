@@ -115,11 +115,11 @@ class UserController extends Controller
         $img_avatar_path = public_path('images/users/avatar/'.$user->image);
 
         if($request->hasFile('image')){
-            if(file_exists($img_path) && file_exists($img_avatar_path) && $user->image != null)
+            if(file_exists($img_path) && file_exists($img_avatar_path) && $user->image !=null)
             {
                 unlink($img_path);
                 unlink($img_avatar_path);
-            }
+            }else{
                 $image = $request->file('image');
                 $random_name = md5(rand().time().rand());
                 $new_name = $random_name . '.'. $image->getClientOriginalExtension();
@@ -128,6 +128,7 @@ class UserController extends Controller
                 $avatar->save(public_path('images/users/avatar/'.$new_name));
                 $avatar->save();
                 $user->image = $new_name;
+            }
         }
         $user->name = $request->name;
         $user->email = $request->email;
@@ -147,7 +148,7 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         $img_path = public_path('images/users/'.$user->image);
         $img_avatar_path = public_path('images/users/avatar/'.$user->image);
-        if(file_exists($img_path) && file_exists($img_avatar_path) && $user->image != null)
+        if(file_exists($img_path) && file_exists($img_avatar_path) && $user->image !=null)
         {
             unlink($img_path);
             unlink($img_avatar_path);
