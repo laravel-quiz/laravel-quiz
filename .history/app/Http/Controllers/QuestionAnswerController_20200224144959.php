@@ -14,10 +14,13 @@ class QuestionAnswerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
- 
+    public function __construct(QuestionAnswerServices $questionAnswerServices)
+    {
+        $this->user = $user;
+    }
     public function index()
     {
-        $quizes = Quiz::all();
+        $quizes = $this->quiz->get();
         return view('admin.questionanswer.index',compact('quizes'));
     }
 

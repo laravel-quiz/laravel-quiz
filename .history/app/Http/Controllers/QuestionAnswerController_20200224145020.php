@@ -17,7 +17,7 @@ class QuestionAnswerController extends Controller
  
     public function index()
     {
-        $quizes = Quiz::all();
+        $quizes = $this->quiz->get();
         return view('admin.questionanswer.index',compact('quizes'));
     }
 
