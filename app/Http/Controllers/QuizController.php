@@ -22,7 +22,7 @@ class QuizController extends Controller
     public function updateScore(Request $request){
         $user = User::find($request->userid);
         $user->score = $request->score;
-        $user->store();
+        $user->save();
         return $user;
         
     }
