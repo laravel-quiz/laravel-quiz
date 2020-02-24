@@ -23,3 +23,5 @@ Route::get('/quiz/all',function(){
     $quizs = Quiz::get()->random(5);
     return QuizResource::collection($quizs);
 });
+
+Route::post('/quiz/score','QuizController@updateScore')->name('quiz.updatescore');
