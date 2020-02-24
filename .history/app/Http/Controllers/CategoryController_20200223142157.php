@@ -13,7 +13,6 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    protected $categoryServices;
     public function __construct(CategoryServices $categoryServices)
     {
         $this->categoryServices = $categoryServices;

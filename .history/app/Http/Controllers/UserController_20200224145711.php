@@ -19,7 +19,7 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    protected $usersServices;
+    protected usersServices;
     public function __construct(UsersServices $usersServices)
     {
         $this->usersServices = $usersServices;
