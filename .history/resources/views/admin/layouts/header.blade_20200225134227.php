@@ -208,7 +208,7 @@
                         </li>
                             <li class="icons dropdown">
                             <div class="user-img c-pointer position-relative" data-toggle="dropdown">
-                                <img src="{{ asset('images/users/'. auth()->user()->image) }}" height="40" width="40" alt="">
+                                <img src="{{ asset('images/users/avatar/'. auth()->user()->image) }}" height="40" width="40" alt="">
                             </div>
                             <div class="user-img c-pointer position-relative" data-toggle="dropdown">
                                 <span>{{ ucwords(auth()->user()->name) }}</span>

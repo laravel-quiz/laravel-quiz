@@ -40,11 +40,11 @@ class UsersServices
     public function update($data,$id)
     {
         try{
-            $image = $data['image'];
-            $data['image'] = $this->imageServices->imageMoveWithName($image);
-            $user =$this->getById($id);
-            $updatedUser = $user->update($data);
-            return $updatedUser;
+        $image = $data['image'];
+        $data['image'] = $this->imageServices->imageMoveWithName($image);
+        $user =$this->getById($id);
+        $updatedUser = $user->update($data);
+        return $updatedUser;
         }
         catch(Exception $e)
         {
@@ -55,7 +55,7 @@ class UsersServices
     public function destroy($id)
     {
         try{
-            return $this->user->delete($id);
+        return $this->user->delete($id);
         }
         catch(Exception $e)
         {

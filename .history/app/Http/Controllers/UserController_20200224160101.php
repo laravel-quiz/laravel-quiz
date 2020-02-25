@@ -63,7 +63,7 @@ class UserController extends Controller
         'name' => ['required', 'string', 'max:50'],
         'email' => ['required', 'email', 'max:255','unique:App\User'],
         'password' => ['required', 'string', 'min:8'],
-        'image' => ['image', 'mimes:jpg,png,jpeg','max:2048']
+        'image' => ['required', 'image', 'mimes:jpg,png,jpeg','max:2048']
         ]);
 
         // if($request->hasFile('image')){
