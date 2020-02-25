@@ -7,26 +7,24 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Mail\Mailable;
+use App\Mail\GameScore;
 use App\User;
 
 class SendEmailJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-
-    protected $mail;
-    protected $user;
-
     /**
      * Create a new job instance.
      *
      * @return void
      */
-    public function __construct(User $user, Mailable $mail)
+    protected $user;
+    public function __construct(User $user)
     {
         $this->user = $user;
-        $this->mail = $mail;
     }
 
     /**
@@ -36,6 +34,6 @@ class SendEmailJob implements ShouldQueue
      */
     public function handle()
     {
-        //
+        Mail::to($this->user)->send(new GameScore($this->user));   
     }
 }

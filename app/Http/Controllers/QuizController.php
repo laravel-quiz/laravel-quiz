@@ -29,7 +29,7 @@ class QuizController extends Controller
             if($request->score > $user->score){
                 $user->score = $request->score;
                 //Mail::to($user)->send(new GameScore($user));
-                SendEmailJob::dispatch($user,new GameScore($user));
+                SendEmailJob::dispatch($user)->delay(now()->addMinutes(1));
             }
         }
         else{
