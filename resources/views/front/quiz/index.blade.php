@@ -23,14 +23,14 @@
                     </div>
 
                 <div id="replay" align="center">
-                    <a href="{{route('quiz.index')}}" style="text-decoration: none;"><button class="col-5 tryagain">Play Again?<img src="{{asset('/images/try_again.png')}}" height="30px" width="30px"></button></>
+                    <a href="{{route('quiz.index')}}" style="text-decoration: none;"><button class="col-5 tryagain"><img src="{{asset('/images/try_again.png')}}" height="30px" width="30px">Play Again?</button></>
                 </div>
             </div>
 @endsection
 
 
 @section('stylesheets')
-<script src="{{ asset('/js/jquery-3.4.1.min.js') }}"></script>
+
 <script type="text/javascript">
 $(document).ready(function(){
     $('#replay').hide();
@@ -44,17 +44,13 @@ $(document).ready(function(){
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
-
     //$('#score').text('Score:'+ score);
-
      //$.get('https://cors-anywhere.herokuapp.com/https://opentdb.com/api.php?amount=10',function(data){
         $.get("/api/quiz/all",function(data){
         //console.log(data);
         //var results = data.results;
         var results = data;
-
         var output = '';
-
         var i =0;
         results.forEach(function(quiz){
             questions.push(quiz);
@@ -62,22 +58,16 @@ $(document).ready(function(){
             i++;
             //output += `<h3> ${quiz.question} </h3>`;
         });
-
         updateScreen();
-
      });
-
      verify = function(userAnswer,correctAnswer){
          if(userAnswer == correctAnswer){
-
             score++;
          }
          index++;
          updateScreen();
      }
-
      updateScreen = function(){
-
         counter = 30;
         var output = '';
         $('#score').text(score);
@@ -108,11 +98,8 @@ $(document).ready(function(){
             //output += `<div align="center" style="margin:2px;"><button class="block" value="${d}" onClick="verify(${d},${questions[index].correct_answer});">${d}</button></div>`
             output += `<div align="center" style="margin:2px;" class="col-5"><button class="block" value="${d}" onClick="verify('${d}','${questions[index].correct_answer}');">${d}</button></div>`
         });
-
         $('#answers').append(output);
-
      }
-
      timer =
          setInterval(function(){
             $('#timer').text(counter);
@@ -123,10 +110,6 @@ $(document).ready(function(){
                 updateScreen();
             }
          },1000);
-
-
-
-
      function shuffle(a) {
         var j, x, i;
         for (i = a.length - 1; i > 0; i--) {
@@ -137,7 +120,6 @@ $(document).ready(function(){
         }
         return a;
     }
-
     updateScore = function(highscore){
         $.ajax({
             method:'POST',
@@ -147,11 +129,10 @@ $(document).ready(function(){
                 userid:'{{Auth::user()->id}}'
             },
             success:function(data){
-                console.log(data); 
+                console.log(data);
             }
         });
     }
-
     // var url = 'https://cors-anywhere.herokuapp.com/https://opentdb.com/api.php?amount=10';
     // fetch(url, {
     // method: 'GET',
@@ -161,10 +142,6 @@ $(document).ready(function(){
     // }).then(res => res.json())
     // .then(response => console.log('Success:', response))
     // .catch(error => console.error('Error:', error));
-
-
-
 });
-
 </script>
 @endsection
