@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Http\Request;
+use App\Http\Resources\Quiz as QuizResource;
+use App\Quiz;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +18,10 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/quiz/all',function(){
+    $quizs = Quiz::get()->random(5);
+    return QuizResource::collection($quizs);
+});
+
+Route::post('/quiz/score','QuizController@updateScore')->name('quiz.updatescore');

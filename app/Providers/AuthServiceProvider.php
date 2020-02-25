@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Providers;
-
+use App\User;
+use App\Policies\UserPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 
@@ -14,6 +15,7 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         // 'App\Model' => 'App\Policies\ModelPolicy',
+        User::class => UserPolicy::class,
     ];
 
     /**
@@ -25,6 +27,8 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        Gate::define('create-user','App\Policies\UserPolicy@Create');
+        Gate::define('edit-user','App\Policies\UserPolicy@update');
+        Gate::define('delete-user','App\Policies\UserPolicy@delete');
     }
 }
