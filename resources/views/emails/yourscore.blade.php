@@ -4,14 +4,16 @@
 
 <head>
     <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>mail</title>
     <style>
         * {
             margin: 0px;
             padding: 0px;
+            font-family: 'Roboto', sans-serif;
         }
-        
+
         .cointainer {
             max-width: 100%;
         }
@@ -20,11 +22,7 @@
             width: 80%;
             margin: 0px auto;
             text-align: center;
-        }
-
-        .image {
-            background-image: url('image/mailman.png');
-            background-color: yellow;
+            background-color: #1a1b1d;
         }
 
         .siz {
@@ -32,18 +30,30 @@
             float: left;
             width: 300px;
             margin-left: 50px;
-            margin-top: 80px;
+            margin-top: 35px;
         }
 
-        span>h1{
-            background-color:#f8fafc;
+        span>img{
+            width: 100px;
         }
         .h1 {
             text-align: center;
         }
         .color{
-            background-color: #2980b9;
             height: 300px;
+        }
+        .color>h1{
+            margin-left: 140px;
+            text-align: left;
+            text-align: justify;
+            color: #20a86a;
+        }
+        .color>p{
+            margin-left: 80px;
+            text-align: left;
+            text-align: justify;
+            font-size: 20px;
+            color: white;
         }
     </style>
 </head>
@@ -51,16 +61,17 @@
 <body>
     <div class="cointainer">
         <div class="row">
-            <span><h1>Quiz Game</h1></span>
+            <span><img src="{{asset(images/quiz.png)}}" alt="hello"></img></span>
         </div>
     </div>
     <div class="cointainer">
         <div class="row">
             <div class="color">
+                <h1>Congratulation!!!</h1>
                 <p>
-                    you have scored {{$user->score}} points in quiz
+                    You have Scored {{$user->score}} in the Quiz game.
                 </p>
-                <img src="image/mailman.png" alt="" class="siz">
+                <img src="{{asset(image/mailman1.png)}}" alt="" class="siz">
             </div>
         </div>
     </div>
