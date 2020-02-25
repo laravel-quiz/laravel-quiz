@@ -6,6 +6,12 @@
         ***********************************-->
         <div class="content-body">
             <div class="container-fluid">
+                @if(Session::has('success'))
+                <div class="alert alert-success alert-dismissible">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                     <p>{!! session()->get('success') !!}</p>
+                  </div>
+                @endif
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">Users Info</h4>

@@ -54,9 +54,13 @@ Route::middleware(['auth','role'])->prefix('/admin')->group(function(){
     Route::delete('/category/{id}','CategoryController@destroy')->name('category.destroy');
 });
 
-Route::get('/quiz','QuizController@index')->name('quiz.index');
+Route::middleware('auth')->group(function(){
+    Route::get('/quiz','QuizController@index')->name('quiz.index')->middleware('auth');
+    
+});
+
 //Route::get('/quiz/all','QuizController@getAll')->name('quiz.all');
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Category;
+use App\Services\CategoryServices;
 
 class CategoryController extends Controller
 {
@@ -12,9 +13,14 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    protected $categoryServices;
+    public function __construct(CategoryServices $categoryServices)
+    {
+        $this->categoryServices = $categoryServices;
+    }
     public function index()
     {
-        $categories = Category::get();
+        $categories = $this->categoryServices->get();
         return view('admin.category.index',compact('categories'));
     }
 
@@ -36,10 +42,19 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $category = new Category();
-        $category->name = $request->name;
-        $category->save();
-        return redirect()->route('category');
+        //without service
+        // $category = new Category();
+        // $category->name = $request->name;
+        // $category->save();
+        // return redirect()->route('category');
+        //with services 
+        $request->validate([
+            'name' =>'required',
+        ]);
+        if($this->categoryServices->store($request->all()))
+        {
+            return redirect()->route('category')->with('success','Category successfull added');
+        }
     }
 
     /**
@@ -61,7 +76,9 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        $category = Category::findOrfail($id);
+        //$category = Category::findOrfail($id);
+        //return view('admin.category.edit',compact('category'));
+        $category = $this->categoryServices->getById($id);
         return view('admin.category.edit',compact('category'));
     }
 
@@ -74,10 +91,17 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $category = Category::findOrfail($id);
-        $category->name = $request->name;
-        $category->save();
-        return redirect()->route('category');
+        // $category = Category::findOrfail($id);
+        // $category->name = $request->name;
+        // $category->save();
+        // return redirect()->route('category');
+        $request->validate([
+            'name' => 'required',
+        ]);
+        if($this->categoryServices->update($request->all(),$id))
+        {
+            return redirect()->route('category')->with('success','Category updated successfully');
+        }
     }
 
     /**
@@ -88,8 +112,13 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        $category = Category::findOrfail($id);
-        $category->delete();
-        return redirect()->route('category');
+        // $category = Category::findOrfail($id);
+        // $category->delete();
+        // return redirect()->route('category');
+        
+        if($this->categoryServices->destroy($id)){
+            
+            return redirect()->route('category')->with('success','Category deleted successfully');
+        }
     }
 }

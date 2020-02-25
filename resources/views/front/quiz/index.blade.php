@@ -81,7 +81,7 @@ $(document).ready(function(){
         counter = 30;
         var output = '';
         $('#score').text(score);
-        if(index>=4){
+        if(index>=5){
             $('#finalscore').text('Your final Score: '+ score + ' out of ' + index);
             $('#question').hide();
              $('#col1').hide();
@@ -91,6 +91,7 @@ $(document).ready(function(){
             $('#scorediv').hide();
             $('#timer').hide();
             $('#replay').show();
+            updateScore(score);
         }
         console.log(questions[index]);
         var value = questions[index].incorrect_answers;
@@ -135,6 +136,20 @@ $(document).ready(function(){
             a[j] = x;
         }
         return a;
+    }
+
+    updateScore = function(highscore){
+        $.ajax({
+            method:'POST',
+            url:"{{ route('quiz.updatescore') }}",
+            data:{
+                score: highscore,
+                userid:'{{Auth::user()->id}}'
+            },
+            success:function(data){
+                console.log(data); 
+            }
+        });
     }
 
     // var url = 'https://cors-anywhere.herokuapp.com/https://opentdb.com/api.php?amount=10';

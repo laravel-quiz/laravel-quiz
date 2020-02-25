@@ -14,9 +14,10 @@ class QuestionAnswerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+ 
     public function index()
     {
-        $quizes = Quiz::get();
+        $quizes = Quiz::all();
         return view('admin.questionanswer.index',compact('quizes'));
     }
 
