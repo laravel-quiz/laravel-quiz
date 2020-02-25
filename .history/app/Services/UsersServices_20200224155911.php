@@ -55,7 +55,7 @@ class UsersServices
     public function destroy($id)
     {
         try{
-            return $this->user->delete($id);
+        return $this->user->delete($id);
         }
         catch(Exception $e)
         {

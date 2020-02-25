@@ -48,7 +48,7 @@
                                             <div class="col-lg-6">
                                                 <select class="form-control" name="role_id">
                                                     @foreach ($roles as $role)
-                                                        <option value="{{ $role->id }}" {{(old('role_id',$user->role_id)==$role->id) ? 'selected':''}}>{{ ucwords($role->name) }}</option>
+                                                        <option value="{{ $role->id }}">{{ ucwords($role->name) }}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
