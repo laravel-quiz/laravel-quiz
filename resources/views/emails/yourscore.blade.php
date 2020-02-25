@@ -1,4 +1,4 @@
-<!-- you have scored {{$user->score}} points in quiz -->
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -61,7 +61,7 @@
 <body>
     <div class="cointainer">
         <div class="row">
-            <span><img src="{{asset(images/quiz.png)}}" alt="hello"></img></span>
+            <span><img src="{{asset('/images/quiz.png')}}" alt="hello"></span>
         </div>
     </div>
     <div class="cointainer">
@@ -71,7 +71,7 @@
                 <p>
                     You have Scored {{$user->score}} in the Quiz game.
                 </p>
-                <img src="{{asset(image/mailman1.png)}}" alt="" class="siz">
+                <img src="{{asset('/image/mailman1.png')}}" alt="" class="siz">
             </div>
         </div>
     </div>
