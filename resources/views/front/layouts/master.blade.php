@@ -23,47 +23,51 @@
             }
             html, body {
                 background-color: #1a1b1d;
+                position: relative;
                 color: #ffff;
                 font-family: 'Roboto', sans-serif;
                 font-weight: 200;
-                /* height: 100vh; */
+                height: 100vh;
                 margin: 0;
             }
-
-            .full-height {
+            /* .full-height {
                 height: 100vh;
             }
-
             .flex-center {
                 align-items: center;
                 display: flex;
                 justify-content: center;
             }
-
             .position-ref {
                 position: relative;
             }
-
             .top-right {
                 position: absolute;
                 right: 10px;
                 top: 18px;
-            }
-
+            } */
             .content {
                 text-align: center;
+                margin: auto;
             }
-
+             .home-content
+             {
+                margin: 0;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                -ms-transform: translate(-50%, -50%);
+                transform: translate(-50%, -50%);
+                text-align: center;
+             }
             .title {
                 font-size: 84px;
                 margin: 20px;
             }
-
             .title img {
                 width: 30%;
                 height: 30%;
             }
-
             .links > a {
                 color: #636b6f;
                 padding: 0 25px;
@@ -73,44 +77,43 @@
                 text-decoration: none;
                 text-transform: uppercase;
             }
-
             .m-b-md {
                 /* margin-bottom: 30px; */
             }
-
-
             .block, .tryagain {
                 display: block;
                 width: 100%;
                 border: none;
                 background-color: #ddd;
-                color: white;
                 /* padding: 14px 10px; */
                 margin: 10px;
-                font-size: 30px;
+                font-size: 3vw;
                 color: black;
                 cursor: pointer;
                 text-align: center;
                 border-radius: 15px;
                 height: 70px;
                 }
-
-                .block:hover,.tryagain:hover {
-                background-color: #ddd;
-                border: solid black 2px;
-                color: black;
+                .block:hover{
+                background-color: #3d3f44;
+                border: solid whitesmoke 2px;
+                color: whitesmoke;
+                transform: translate(10px, -10px);
+                animation: solution 1.5s ease-in-out infinite alternate;
                 }
 
+                .tryagain:hover {
+                background-color: #3d3f44;
+                border: solid whitesmoke 2px;
+                color: whitesmoke;
 
+                }
         </style>
-
-
-
-
     </head>
     <body>
 
         @yield('content')
         @yield('stylesheets')
     </body>
+    <script src="{{ asset('/js/jquery-3.4.1.min.js') }}"></script>
 </html>
