@@ -1,6 +1,5 @@
 html,
 body {
-	background-color: #1a1b1d;
 	position: relative;
 	font-family: 'Roboto', sans-serif;
 	font-weight: 200;
@@ -13,6 +12,7 @@ body {
 	margin: auto;
 }
 .home-content {
+	background-color: #1a1b1d;
 	margin: 0;
 	color: #ffff;
 	position: absolute;
