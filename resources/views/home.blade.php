@@ -1,10 +1,22 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
+
+            <div class="home-content">
+                <div class="row justify-content-center title">
+                    <h1>Welcome {{Auth::user()->name}}</h1>
+                </div>
+                <div class="row justify-content-center title">
+                    <img src="{{asset('/images/quiz.png')}}" class="img-responsive">
+                </div>
+
+                {{-- <div class="row justify-content-center">
+                    <div class="col-2 .container-fluid"><h3>Play</h3></div>
+                    <div class="col-2 .container-fluid"><h3>LogOut</h3></div>
+                </div> --}}
+            </div>
+
+            {{-- <div class="card">
                 <div class="card-header">Dashboard</div>
 
                 <div class="card-body">
@@ -16,8 +28,5 @@
 
                     You are logged in!
                 </div>
-            </div>
-        </div>
-    </div>
-</div>
+            </div> --}}
 @endsection

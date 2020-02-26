@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Resources\Quiz as QuizResource;
 use App\Mail\GameScore;
 use Illuminate\Support\Facades\Mail;
+use App\Jobs\SendEmailJob;
 use App\Quiz;
 use App\User;
 
@@ -30,7 +31,8 @@ class QuizController extends Controller
         if($user->score != null){
             if($request->score > $user->score){
                 $user->score = $request->score;
-                Mail::to($user)->send(new GameScore($user));
+                //Mail::to($user)->send(new GameScore($user));
+                SendEmailJob::dispatch($user)->delay(now()->addMinutes(1));
             }
         }
         else{
