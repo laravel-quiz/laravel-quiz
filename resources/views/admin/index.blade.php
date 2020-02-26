@@ -11,7 +11,16 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="user-img c-pointer position-relative" data-toggle="dropdown">
-                                    <h1>Hello</h1>
+                                    <div class="row">
+                                         <div class="col-6">
+                                            <h1>User</h1>
+                                            <h2>{{$user->count()}}</h2>
+                                        </div>
+                                        <div class="col-6">
+                                            <h1>Question</h1>
+                                            <h2>{{$question->count()}}</h2>
+                                        </div>
+                                    </div>
 
                                 </div>
                             </div>
