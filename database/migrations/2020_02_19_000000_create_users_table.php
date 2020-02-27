@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->bigInteger('role_id')->unsigned();
             $table->foreign('role_id')->references('id')->on('role');
             $table->string('image')->nullable();
-            $table->integer('score')->nullable();
+            $table->integer('score')->default(0);
             $table->rememberToken();
             $table->softDeletes();
             $table->timestamps();

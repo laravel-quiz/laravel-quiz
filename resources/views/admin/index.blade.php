@@ -30,6 +30,55 @@
                         </div>
                     </div>
                 </div>
+                <div class="row">
+                    <h2>3 Player With Top Score </h2>
+                    <table class="table">
+                        <thead>
+                            <th>S.N</th>
+                            <th>Full Name</th>
+                            <th>Email</th>
+                            <th>Score</th>
+                        </thead>
+                        <tbody>
+                            @foreach ($user->sortByDesc('score') as $key=>$u)
+                                @if(($key)<3)
+                                    <tr>
+                                        <td>{{$key+1}}</td>
+                                        <td>{{$u->name}}</td>
+                                        <td>{{$u->email}}</td>
+                                        <td>{{$u->score}}</td>
+                                    </tr>
+                                @endif
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row">
+                    <h2>3 Recent Player</h2>
+                    <table class="table">
+                        <thead>
+                            <th>S.N</th>
+                            <th>Full Name</th>
+                            <th>Email</th>
+                            <th>Score</th>
+                            <th>Time</th>
+                        </thead>
+                        <tbody>
+                            @foreach ($user->sortByDesc('updated_at') as $key=>$u)
+                                @if(($key)<3)
+                                    <tr>
+                                        <td>{{$key+1}}</td>
+                                        <td>{{$u->name}}</td>
+                                        <td>{{$u->email}}</td>
+                                        <td>{{$u->score}}</td>
+                                        <td>{{\Carbon\Carbon::parse($u->updated_at)->diffForHumans()}}</td>
+                                    </tr>
+                                @endif
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+
             </div>
             <!-- #/ container -->
         </div>
