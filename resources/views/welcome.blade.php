@@ -80,9 +80,9 @@
             @endif
 
             <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
+               <div>
+               <img src="{{asset('images/quiz.png')}}" class="img-fluid" alt="Responsive image" height="55%" width="55%">
+               </div>
 
                 
             </div>
