@@ -20,11 +20,11 @@ class Router
         {
             if(Auth::user()->role->name == 'superadmin')
             {
-                return view('admin.index');
+                return redirect(route('admin.index'));
             }
             elseif(Auth::user()->role->name == 'user')
             {
-                return view('home');
+                return redirect(route('home'));
             }
         }
         return $next($request);
