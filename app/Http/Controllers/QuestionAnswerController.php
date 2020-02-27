@@ -14,7 +14,7 @@ class QuestionAnswerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
- 
+
     public function index()
     {
         $quizes = Quiz::all();
@@ -94,7 +94,6 @@ class QuestionAnswerController extends Controller
     {
         $temp = explode(',',$request->incorrect_answer);
         $incorrect_answers = array_map('trim',$temp);
-        //dd($incorrect_answers);
         $quiz = Quiz::findOrfail($id);
         $quiz->category_id = $request->category_id;
         $quiz->question = $request->question;

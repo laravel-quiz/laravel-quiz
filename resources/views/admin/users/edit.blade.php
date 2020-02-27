@@ -26,6 +26,9 @@
                                             </label>
                                             <div class="col-lg-6">
                                                 <input type="text" class="form-control" id="val-name" value="{{ $user->name }}" name="name" placeholder="Enter full name..">
+                                                @error('name')
+                                                    <div class="alert alert-danger">{{ $message }}</div>
+                                                @enderror
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -33,6 +36,9 @@
                                             </label>
                                             <div class="col-lg-6">
                                                 <input type="file" class="form-control" name="image">
+                                                @error('image')
+                                                    <div class="alert alert-danger">{{ $message }}</div>
+                                                @enderror
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -40,6 +46,9 @@
                                             </label>
                                             <div class="col-lg-6">
                                                 <input type="text" class="form-control" id="val-email" value="{{ $user->email }}" name="email" placeholder="Your valid email..">
+                                                @error('email')
+                                                    <div class="alert alert-danger">{{ $message }}</div>
+                                                @enderror
                                             </div>
                                         </div>
                                         <div class="form-group row">

@@ -24,6 +24,7 @@ class QuizController extends Controller
 
 
     public function updateScore(Request $request){
+
         $user = User::find($request->userid);
         if($user->score != null){
             if($request->score > $user->score){
@@ -35,9 +36,9 @@ class QuizController extends Controller
         else{
             $user->score = $request->score;
         }
-        
+
         $user->save();
         return $user;
-        
+
     }
 }

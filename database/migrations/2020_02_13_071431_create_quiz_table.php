@@ -20,9 +20,9 @@ class CreateQuizTable extends Migration
             $table->string('difficulty')->nullable();
             $table->string('question');
             $table->string('correct_answer');
-            
-            $table->timestamps();
             $table->foreign('category_id')->references('id')->on('category');
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 

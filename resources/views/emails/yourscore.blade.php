@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,18 +12,15 @@
             padding: 0px;
             font-family: 'Roboto', sans-serif;
         }
-
         .cointainer {
             max-width: 100%;
         }
-
         .row {
             width: 80%;
             margin: 0px auto;
             text-align: center;
             background-color: #1a1b1d;
         }
-
         .siz {
             position: absolute;
             float: left;
@@ -32,7 +28,6 @@
             margin-left: 50px;
             margin-top: 35px;
         }
-
         span>img{
             width: 100px;
         }

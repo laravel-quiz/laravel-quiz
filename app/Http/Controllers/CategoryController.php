@@ -42,14 +42,8 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //without service
-        // $category = new Category();
-        // $category->name = $request->name;
-        // $category->save();
-        // return redirect()->route('category');
-        //with services 
-        $request->validate([
-            'name' =>'required',
+        $validateData = $request->validate([
+            'name' => ['required', 'alpha', 'max:25'],
         ]);
         if($this->categoryServices->store($request->all()))
         {
@@ -115,9 +109,9 @@ class CategoryController extends Controller
         // $category = Category::findOrfail($id);
         // $category->delete();
         // return redirect()->route('category');
-        
+
         if($this->categoryServices->destroy($id)){
-            
+
             return redirect()->route('category')->with('success','Category deleted successfully');
         }
     }

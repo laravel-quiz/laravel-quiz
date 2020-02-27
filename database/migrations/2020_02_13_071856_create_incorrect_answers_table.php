@@ -17,8 +17,8 @@ class CreateIncorrectAnswersTable extends Migration
             $table->bigIncrements('id');
             $table->string('answer');
             $table->unsignedBigInteger('quiz_id');
-
             $table->foreign('quiz_id')->references('id')->on('quiz')->onDelete('cascade');
+            $table->softDeletes();
         });
     }
 

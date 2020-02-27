@@ -18,6 +18,9 @@
                                             </label>
                                             <div class="col-lg-6">
                                                 <input type="text" class="form-control" id="val-name" name="question" placeholder="Enter Question">
+                                                @error('question')
+                                                    <div class="alert alert-danger">{{ $message }}</div>
+                                                @enderror
                                             </div>
                                         </div>
                                         <div class="form-group row">

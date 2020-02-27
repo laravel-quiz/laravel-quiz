@@ -21,15 +21,17 @@ class UsersServices
 
     public function getById($id)
     {
-        return $this->user->where('id','=',$id);
+        return $this->user->findOrfail($id);
     }
 
     public function store($request)
     {
         try{
-            $image = $request['image'];
+            if (array_key_exists('image', $request)) {
+                $image = $request['image'];
+                $request['image'] = $this->imageServices->imageMoveWithName($image);
+            }
             $request['password'] = Hash::make($request['password']);
-            $request['image'] = $this->imageServices->imageMoveWithName($image);
             return $this->user->create($request);
         }
         catch(Exception $e)
@@ -40,8 +42,10 @@ class UsersServices
     public function update($data,$id)
     {
         try{
-            $image = $data['image'];
-            $data['image'] = $this->imageServices->imageMoveWithName($image);
+            if (array_key_exists('image', $request)) {
+                $image = $request['image'];
+                $request['image'] = $this->imageServices->imageMoveWithName($image);
+            }
             $user =$this->getById($id);
             $updatedUser = $user->update($data);
             return $updatedUser;
@@ -55,7 +59,8 @@ class UsersServices
     public function destroy($id)
     {
         try{
-            return $this->user->delete($id);
+            $user = $this->getById($id);
+            return $user->delete($id);
         }
         catch(Exception $e)
         {

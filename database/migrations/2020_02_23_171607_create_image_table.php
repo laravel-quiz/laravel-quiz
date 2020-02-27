@@ -18,6 +18,7 @@ class CreateImageTable extends Migration
             $table->bigInteger('users_id')->unsigned();
             $table->foreign('users_id')->references('id')->on('users');
             $table->string('image_name');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

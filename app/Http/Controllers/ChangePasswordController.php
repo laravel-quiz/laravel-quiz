@@ -29,9 +29,8 @@ class ChangePasswordController extends Controller
     {
         $userId = auth()->user()->id;
         $user = User::findOrfail($userId);
-        //dd($user);
-        $request->validate([
-            'oldpassword' => ['required', 'string', 'min:8'],
+        $validateData = $request->validate([
+            'oldpassword' => ['required', 'string'],
             'password' => ['required', 'string', 'min:8','different:oldpassword','unique:App\User'],
         ]);
         if (password_verify($request->oldpassword,$user->password)) {

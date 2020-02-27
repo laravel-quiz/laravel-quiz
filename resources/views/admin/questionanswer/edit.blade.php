@@ -19,6 +19,9 @@
                                             </label>
                                             <div class="col-lg-6">
                                                 <input type="text" class="form-control" id="val-name" name="question" value="{{ $questionanswer->question }}" placeholder="Enter Question">
+                                                @error('question')
+                                                    <div class="alert alert-danger">{{ $message }}</div>
+                                                @enderror
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -38,6 +41,9 @@
                                             </label>
                                             <div class="col-lg-6">
                                                 <input type="text" class="form-control" id="val-name" name="correct_answer" value="{{ $questionanswer->correct_answer }}" placeholder="Enter Question Answer">
+                                                @error('correct_answer')
+                                                    <div class="alert alert-danger">{{ $message }}</div>
+                                                @enderror
                                             </div>
                                         </div>
                                         @php
@@ -52,6 +58,9 @@
                                             </label>
                                             <div class="col-lg-6">
                                                 <input type="text" class="form-control" id="val-name" name="incorrect_answer" value="{{ ltrim($temp,",") }}" placeholder="Enter any 3 seperated by commma ','">
+                                                @error('incorrect_answer')
+                                                    <div class="alert alert-danger">{{ $message }}</div>
+                                                @enderror
                                             </div>
                                         </div>
                                         <div class="form-group row">

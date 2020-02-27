@@ -19,6 +19,9 @@
                                             </label>
                                             <div class="col-lg-6">
                                                 <input type="text" class="form-control" id="val-name" name="answer" value="{{ $incorrectans->answer }}" placeholder="Enter Incorrect answer">
+                                                @error('answer')
+                                                    <div class="alert alert-danger">{{ $message }}</div>
+                                                @enderror
                                             </div>
                                         </div>
 
