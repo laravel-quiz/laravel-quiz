@@ -12,25 +12,10 @@
 */
 
 Route::get('/', function () {
-    //dd(Auth::user()->role->name);
-    if(Auth::user())
-    {
-        if(Auth::user()->role->name == 'superadmin')
-        {
-            return redirect(route('admin.index'));
-        }
-        elseif(Auth::user()->role->name == 'user')
-        {
-            return redirect(asset('home'));
-        }
-    }
 
-    else
-    {
-        return view('welcome');
-    }
+    return view('welcome');
 
-});
+})->middleware('router');
 
 Route::middleware(['auth','role'])->prefix('/admin')->group(function(){
     Route::get('/dashboard','AdminController@index')->name('admin.index');
