@@ -42,9 +42,9 @@ class UsersServices
     public function update($data,$id)
     {
         try{
-            if (array_key_exists('image', $request)) {
-                $image = $request['image'];
-                $request['image'] = $this->imageServices->imageMoveWithName($image);
+            if (array_key_exists('image', $data)) {
+                $image = $data['image'];
+                $data['image'] = $this->imageServices->imageMoveWithName($image);
             }
             $user =$this->getById($id);
             $updatedUser = $user->update($data);
