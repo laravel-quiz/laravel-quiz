@@ -21,7 +21,11 @@
                                             <h2>{{$question->count()}}</h2>
                                         </div>
                                     </div>
+                                    <div class="row">
+                                        <table class="table">
 
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
                         </div>
