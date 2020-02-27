@@ -16,8 +16,10 @@ class AdminController extends Controller
     public function index()
     {
         $user = User::get();
+        $recent = User::orderBy('updated_at','desc')->take(3)->get();
+        $top = User::orderBy('score','desc')->take(3)->get();
         $question = Quiz::get();
-        return view('admin.index',\compact('user','question'));
+        return view('admin.index',\compact('user','recent','question','top'));
     }
 
     /**

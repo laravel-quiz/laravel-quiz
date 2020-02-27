@@ -66,3 +66,6 @@ Route::middleware('auth')->group(function(){
 Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
+
+Route::get('/export/excel/recentplayer', 'ExcelController@recentplayer')->name('excel.recentplayer');
+Route::get('/export/excel/topplayer', 'ExcelController@topplayer')->name('excel.topplayer');
