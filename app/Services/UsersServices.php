@@ -27,7 +27,6 @@ class UsersServices
     public function store($request)
     {
         try{
-            dd($request);
             if (array_key_exists('image', $request)) {
                 $image = $request['image'];
                 $request['image'] = $this->imageServices->imageMoveWithName($image);

@@ -43,8 +43,6 @@
     <script src="{{ asset('plugins/chartist/js/chartist.min.js') }}"></script>
     <script src="{{ asset('plugins/chartist-plugin-tooltips/js/chartist-plugin-tooltip.min.js') }}"></script>
 
-
-
     <script src="{{ asset('js/dashboard/dashboard-1.js') }}"></script>
     <script src="{{ asset('plugins/validation/jquery.validate.min.js') }}"></script>
     <script src="{{ asset('plugins/validation/jquery.validate-init.js') }}"></script>
@@ -53,3 +51,28 @@
 </body>
 
 </html>
+
+<script type="text/javascript">
+    function previewImage()
+    {
+        var preview = document.querySelector("img.img-thumbnail");
+
+        var file = document.querySelector('input[type=file]').files[0];
+
+        var reader = new FileReader();
+
+        reader.addEventListener("load", function () {
+
+        preview.src = reader.result;
+
+        }, false);
+
+        if (file)
+
+        {
+
+        reader.readAsDataURL(file);
+
+        }
+    }
+</script>
