@@ -118,4 +118,9 @@ class QuestionAnswerController extends Controller
         $quiz->delete();
         return redirect()->route('questionanswer');
     }
+
+
+    public function showSettings(){
+        return view('admin.questionanswer.showsettings');
+    }
 }
