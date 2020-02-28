@@ -4,7 +4,6 @@
 /storage/*.key
 /vendor
 /public/images/users/*
-/database/seeds
 /public/img/*
 .env
 .env.backup
