@@ -37,7 +37,7 @@
                             <div class="card-body">
                                 <div class="active-member">
                                     <div class="table-responsive">
-                                        <h2>Player With Top Score <a href="{{route('excel.topplayer')}}"><i class="fa fa-file-excel-o" style="float:right;font-size:30px;color:green"></i></i></a></h2>
+                                        <h2>Player With Top Score <a href="{{route('excel.topplayer')}}"><i class="fa fa-file-excel-o" style="font-size:50px;color:green"></i></i></a></h2>
                                         <table class="table table-xs mb-0">
                                             <thead>
                                                 <tr>
@@ -74,7 +74,7 @@
                             <div class="card-body">
                                 <div class="active-member">
                                     <div class="table-responsive">
-                                        <h2>Recent Play on Quiz <a href="{{route('excel.recentplayer')}}"><i class="fa fa-file-excel-o" style="float:right;font-size:30px;color:green"></i></i></a></h2>
+                                        <h2>Recent Play on Quiz <a href="{{route('excel.recentplayer')}}"><i class="fa fa-file-excel-o" style="font-size:50px;color:green"></i></i></a></h2>
                                         <table class="table table-xs mb-0">
                                             <thead>
                                                 <tr>

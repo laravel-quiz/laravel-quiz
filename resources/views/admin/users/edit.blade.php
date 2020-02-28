@@ -15,14 +15,14 @@
                                         @csrf
                                         @method('PUT')
                                         <div class="form-group row">
-                                            <label class="col-lg-4 col-form-label" for="val-name">Image</span>
+                                            <label class="col-lg-4 col-form-label" for="val-image">Image</span>
                                             </label>
                                             <div class="col-lg-6">
-                                                <img src="{{ asset('images/users/'.$user->image) }}" alt="" width="100" height="100">
+                                                <img class="img-thumbnail" src="{{ asset('images/users/'.$user->image) }}" alt="" width="100px" height="100px">
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-lg-4 col-form-label" for="val-name">Name</span>
+                                            <label class="col-lg-4 col-form-label" for="val-image">Name</span>
                                             </label>
                                             <div class="col-lg-6">
                                                 <input type="text" class="form-control" id="val-name" value="{{ $user->name }}" name="name" placeholder="Enter full name..">
@@ -35,7 +35,7 @@
                                             <label class="col-lg-4 col-form-label">Image</span>
                                             </label>
                                             <div class="col-lg-6">
-                                                <input type="file" class="form-control" name="image">
+                                                <input type="file" class="form-control" name="image" onchange="previewImage()">
                                                 @error('image')
                                                     <div class="alert alert-danger">{{ $message }}</div>
                                                 @enderror
