@@ -39,6 +39,7 @@ $(document).ready(function(){
     var counter = 30;
     var score = 0;
     var index = 0;
+    var total = 0;
      $.ajaxSetup({
       headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -52,6 +53,7 @@ $(document).ready(function(){
         var results = data;
         var output = '';
         var i =0;
+        total = data.length;
         results.forEach(function(quiz){
             questions.push(quiz);
             questions[i].incorrect_answers.push(quiz.correct_answer);
@@ -71,7 +73,7 @@ $(document).ready(function(){
         counter = 30;
         var output = '';
         $('#score').text(score);
-        if(index>=5){
+        if(index>=total){
             $('#finalscore').text('Your final Score: '+ score + ' out of ' + index);
             $('#question').hide();
              $('#col1').hide();
