@@ -220,7 +220,7 @@
                                             <a href="{{ route('change.password') }}"><i class="icon-user"></i> <span>Change Password</span></a>
                                         </li>
                                         <li>
-                                            <a href="{{ route('settings.index') }}"> <span>Settings</span></a>
+                                            <a href="{{ route('settings.index') }}"><i class="fa fa-cog"></i> <span> Settings</span></a>
                                         </li>
                                         <li>
                                             <a href="javascript:void()">

@@ -18,12 +18,15 @@
         Scripts
     ***********************************-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script src="{{ asset('plugins/common/common.min.js') }}"></script>
     <script src="{{ asset('js/custom.min.js') }}"></script>
     <script src="{{ asset('js/settings.js') }}"></script>
     <script src="{{ asset('js/gleek.js') }}"></script>
     <script src="{{ asset('js/styleSwitcher.js') }}"></script>
+
+    <!-- For Value increment buttons -->
+    <script src="{{ asset('js/valueIncrease.js') }}"
 
     <!-- Chartjs -->
     <script src="{{ asset('plugins/chart.js/Chart.bundle.min.js') }}"></script>
