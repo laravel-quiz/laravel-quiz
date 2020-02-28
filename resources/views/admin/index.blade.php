@@ -38,6 +38,7 @@
                                 <div class="active-member">
                                     <div class="table-responsive">
                                         <h2>Player With Top Score </h2>
+                                        <a href="{{route('excel.topplayer')}}">Export to excel</a>
                                         <table class="table table-xs mb-0">
                                             <thead>
                                                 <tr>
@@ -45,18 +46,19 @@
                                                     <th>Full Name</th>
                                                     <th>Email</th>
                                                     <th>Score</th>
+                                                    <th>Time</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach ($user->sortByDesc('score') as $key=>$u)
-                                                    @if(($key)<3)
+                                                @foreach ($top as $key=>$p)
                                                         <tr>
                                                             <td>{{$loop->iteration}}</td>
-                                                            <td><img src="{{ asset('images/users/'. $u->image) }}" class=" rounded-circle mr-3" alt="">{{ucwords($u->name)}}</td>
-                                                            <td>{{$u->email}}</td>
-                                                            <td>{{$u->score}}</td>
+                                                            <td><img src="{{ asset('images/users/'. $p->image) }}" class=" rounded-circle mr-3" alt="">{{ucwords($p->name)}}</td>
+                                                            <td>{{$p->email}}</td>
+                                                            <td>{{$p->score}}</td>
+                                                            <td>{{\Carbon\Carbon::parse($p->updated_at)->diffForHumans()}}</td>
                                                         </tr>
-                                                    @endif
+
                                                 @endforeach
                                             </tbody>
                                         </table>
@@ -73,7 +75,7 @@
                             <div class="card-body">
                                 <div class="active-member">
                                     <div class="table-responsive">
-                                        <h2>Recent Play on Quiz </h2>
+                                        <h2>Recent Play on Quiz </h2><a href="{{route('excel.recentplayer')}}">Export to excel</a>
                                         <table class="table table-xs mb-0">
                                             <thead>
                                                 <tr>
@@ -85,16 +87,14 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach ($user->sortByDesc('updated_at') as $key=>$u)
-                                                    @if(($key)<3)
+                                                @foreach ($recent as $key=>$r)
                                                         <tr>
                                                             <td>{{$loop->iteration}}</td>
-                                                            <td><img src="{{ asset('images/users/'. $u->image) }}" class="rounded-circle mr-3">{{ucwords($u->name)}}</td>
-                                                            <td>{{$u->email}}</td>
-                                                            <td>{{$u->score}}</td>
-                                                            <td>{{\Carbon\Carbon::parse($u->updated_at)->diffForHumans()}}</td>
+                                                            <td><img src="{{ asset('images/users/'. $r->image) }}" class="rounded-circle mr-3">{{ucwords($r->name)}}</td>
+                                                            <td>{{$r->email}}</td>
+                                                            <td>{{$r->score}}</td>
+                                                            <td>{{\Carbon\Carbon::parse($r->updated_at)->diffForHumans()}}</td>
                                                         </tr>
-                                                    @endif
                                                 @endforeach
                                             </tbody>
                                         </table>
