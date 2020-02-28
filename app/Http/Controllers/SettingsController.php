@@ -17,6 +17,6 @@ class SettingsController extends Controller
         $quantity = Setting::where('name','=','question-quantity')->first();
         $quantity->value = $request->quantity;
         $quantity->save();
-        return 'done i guess';
+        return redirect()->route('settings.index');
     }
 }
