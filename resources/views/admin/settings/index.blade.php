@@ -12,8 +12,10 @@
                     </div>
                     <form method="POST" action="{{route('settings.update')}}">
                     @csrf
+                    @method('PUT')
+                    
                     <label>Set the number of question to:</label>
-                    <input type="number" id="quantity" name="quantity" min="5" max="10">
+                    <input type="number" id="quantity" name="quantity" min="5" max="10" value={{$quantity->value}}>
                     <button type="submit">Save</button>
                     </form>
                 </div>

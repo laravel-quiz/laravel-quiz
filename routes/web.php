@@ -36,11 +36,11 @@ Route::middleware(['auth','role'])->prefix('/admin')->group(function(){
     Route::post('/questionanswer/store','QuestionAnswerController@store')->name('questionanswer.store');
     Route::get('/questionanswer/{id}/edit','QuestionAnswerController@edit')->name('questionanswer.edit');
     Route::put('/questionanswer/{id}','QuestionAnswerController@update')->name('questionanswer.update');
-    Route::get('/questionanswer/settings','QuestionAnswerController@showSettings')->name('questionanswer.settings');
     Route::get('/questionanswer/{id}','QuestionAnswerController@show')->name('questionanswer.show');
     Route::delete('/questionanswer/{id}','QuestionAnswerController@destroy')->name('questionanswer.destroy');
 
-    Route::post('/settings','SettingsController@update')->name('settings.update');
+    Route::get('/settings','SettingsController@index')->name('settings.index');
+    Route::put('/settings/update','SettingsController@update')->name('settings.update');
 
     Route::get('/incorrectanswer','IncorrectAnswerController@index')->name('incorrectanswer');
     Route::get('/incorrectanswer/create','IncorrectAnswerController@create')->name('incorrectanswer.create');

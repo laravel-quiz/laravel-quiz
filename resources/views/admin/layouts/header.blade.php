@@ -220,6 +220,9 @@
                                             <a href="{{ route('change.password') }}"><i class="icon-user"></i> <span>Change Password</span></a>
                                         </li>
                                         <li>
+                                            <a href="{{ route('settings.index') }}"> <span>Settings</span></a>
+                                        </li>
+                                        <li>
                                             <a href="javascript:void()">
                                                 <i class="icon-envelope-open"></i> <span>Inbox</span> <div class="badge gradient-3 badge-pill gradient-1">3</div>
                                             </a>
