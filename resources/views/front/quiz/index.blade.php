@@ -61,7 +61,7 @@ $(document).ready(function(){
     //$('#score').text('Score:'+ score);
      //$.get('https://cors-anywhere.herokuapp.com/https://opentdb.com/api.php?amount=10',function(data){
         $.get("/api/quiz/all",function(data){
-        
+
         //var results = data.results;
         console.log(data.meta.min);
         var results = data.data;
@@ -90,10 +90,10 @@ $(document).ready(function(){
         $('#score').text(score);
         if(index>=total){
             if(score>=minQuestion){
-                $('#remarks').text('Remarks: Congratulation you have passed');
+                $('#remarks').text('Remarks: Congratulation you have passed').css('color','#20a86a');
             }
             else{
-                $('#remarks').text('Remarks: Sorry you have failed');
+                $('#remarks').text('Remarks: Sorry you have failed').css('color','#eb422f');
             }
             $('#remarks').show();
             $('#finalscore').text('Your final Score: '+ score + ' out of ' + index);

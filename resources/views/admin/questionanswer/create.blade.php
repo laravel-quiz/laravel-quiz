@@ -59,6 +59,29 @@
                                 </div>
                             </div>
                         </div>
+                        <p style="size:20px; text-align:center;">Or</p>
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="form-validation">
+                                    <form class="form-valide" action="#" method="POST" >
+                                        @csrf
+                                    
+                                        <div class="form-group row">
+                                            <label class="col-lg-4 col-form-label" for="val-name">Import From Excel</span>
+                                            </label>
+                                            <div class="col-lg-6">
+                                                <input type="file" class="" id="val-name" name="incorrect_answer" placeholder="Enter any 3 seperated by commma ','">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-lg-8 ml-auto">
+                                                <button type="submit" class="btn btn-primary">Import</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
