@@ -6,13 +6,18 @@
                 <ul class="metismenu" id="menu">
                     <li>
                         <a href="{{ route('admin.index') }}" aria-expanded="false">
-                            <i class="icon-home menu-icon"></i><span class="nav-text">Dashboard</span>
+                            <i class="fa fa-home menu-icon"></i><span class="nav-text">Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('quiz.index') }}" aria-expanded="false">
+                            <i class="fa fa-play menu-icon"></i><span class="nav-text">Play Quiz</span>
                         </a>
                     </li>
                     
                     <li>
                         <a class="has-arrow" href="{{ route('users.index') }}" aria-expanded="false">
-                            <i class="icon-user menu-icon"></i> <span class="nav-text">User</span>
+                            <i class="fa fa-user menu-icon"></i> <span class="nav-text">User</span>
                         </a>
                         <ul aria-expanded="false">
                             @can('create-user')<li><a href="{{ route('users.create') }}">Add User</a></li>@endcan
@@ -22,7 +27,7 @@
                     
                     <li>
                         <a class="has-arrow" href="{{ route('questionanswer') }}" aria-expanded="false">
-                            <i class="icon-question menu-icon"></i> <span class="nav-text">Question</span>
+                            <i class="fa fa-question menu-icon"></i> <span class="nav-text">Question</span>
                         </a>
                         <ul aria-expanded="false">
                             <li><a href=" {{ route('questionanswer.create') }} ">Add Question</a></li>
@@ -31,7 +36,7 @@
                     </li>
                     <li>
                         <a class="has-arrow" href=" {{ route('incorrectanswer') }} " aria-expanded="false">
-                            <i class="icon-question menu-icon"></i> <span class="nav-text">InAnswer</span>
+                            <i class="fa fa-question menu-icon"></i> <span class="nav-text">InAnswer</span>
                         </a>
                         <ul aria-expanded="false">
                             <li><a href=" {{ route('incorrectanswer.create') }} ">Add InAnswer</a></li>
