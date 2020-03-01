@@ -20,11 +20,19 @@
                 </div>
                 <div id="answers" class="row justify-content-center">
 
-                    </div>
-
-                <div id="replay" align="center">
-                    <a href="{{route('quiz.index')}}" style="text-decoration: none;"><button class="col-5 tryagain"><img src="{{asset('/images/try_again.png')}}" height="30px" width="30px">Play Again?</button></>
                 </div>
+
+                <div class="row justify-content-center" id="replay">
+                    <div class="col-5 .container-fluid">
+                        <a href="{{route('quiz.index')}}" style="text-decoration: none;"><button class="tryagain"><img src="{{asset('/images/try_again.png')}}" height="30px" width="30px">Play Again?</button></a>
+                    </div>
+                    <div class="col-5 .container-fluid">
+                        <a href="{{route('download.certificate')}}" style="text-decoration: none;"><button class="tryagain" id="download" onclick="download()">Download Certificate</button></a>
+                    </div>
+                </div>
+                {{-- <div id="replay" align="center">
+                    <a href="{{route('quiz.index')}}" style="text-decoration: none;"><button class="col-5 tryagain"><img src="{{asset('/images/try_again.png')}}" height="30px" width="30px">Play Again?</button></>
+                </div> --}}
             </div>
 @endsection
 
@@ -133,6 +141,21 @@ $(document).ready(function(){
             }
         });
     }
+
+    // function download(){
+    //     $.ajax({
+    //         method:'GET',
+    //         url:"{{ route('download.certificate') }}",
+    //         data:{
+    //             score: highscore,
+    //             userid:'{{Auth::user()->id}}'
+    //         },
+    //         success:function(data){
+    //             console.log(data);
+    //         }
+    //     });
+    // }
+
     // var url = 'https://cors-anywhere.herokuapp.com/https://opentdb.com/api.php?amount=10';
     // fetch(url, {
     // method: 'GET',
