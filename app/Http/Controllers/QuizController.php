@@ -22,7 +22,11 @@ class QuizController extends Controller
 
 
     public function getAll(){
-        return new QuizResource(Quiz::find(1));
+        //return new QuizResource(Quiz::find(1));
+        $quantity = Setting::where('name','=','question-quantity')->first();
+        
+        $quizs = Quiz::get()->random($quantity->value);
+        return QuizResource::collection($quizs);
     }
 
 

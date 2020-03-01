@@ -39,6 +39,9 @@ Route::middleware(['auth','role'])->prefix('/admin')->group(function(){
     Route::get('/questionanswer/{id}','QuestionAnswerController@show')->name('questionanswer.show');
     Route::delete('/questionanswer/{id}','QuestionAnswerController@destroy')->name('questionanswer.destroy');
 
+    Route::get('/settings','SettingsController@index')->name('settings.index');
+    Route::put('/settings/update','SettingsController@update')->name('settings.update');
+
     Route::get('/incorrectanswer','IncorrectAnswerController@index')->name('incorrectanswer');
     Route::get('/incorrectanswer/create','IncorrectAnswerController@create')->name('incorrectanswer.create');
     Route::post('/incorrectanswer/store','IncorrectAnswerController@store')->name('incorrectanswer.store');

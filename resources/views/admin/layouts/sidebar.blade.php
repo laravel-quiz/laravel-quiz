@@ -27,7 +27,6 @@
                         <ul aria-expanded="false">
                             <li><a href=" {{ route('questionanswer.create') }} ">Add Question</a></li>
                             <li><a href=" {{ route('questionanswer') }} ">Manage Question</a></li>
-
                         </ul>
                     </li>
                     <li>
