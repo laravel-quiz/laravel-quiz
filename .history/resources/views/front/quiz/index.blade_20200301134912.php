@@ -90,10 +90,10 @@ $(document).ready(function(){
         $('#score').text(score);
         if(index>=total){
             if(score>=minQuestion){
-                $('#remarks').text('Remarks: Congratulation you have passed').css('color','#20a86a');
+                $('#remarks').text('Remarks: Congratulation you have passed').css('color','green');
             }
             else{
-                $('#remarks').text('Remarks: Sorry you have failed').css('color','#eb422f');
+                $('#remarks').text('Remarks: Sorry you have failed');
             }
             $('#remarks').show();
             $('#finalscore').text('Your final Score: '+ score + ' out of ' + index);

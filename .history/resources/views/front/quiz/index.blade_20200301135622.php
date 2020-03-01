@@ -93,7 +93,7 @@ $(document).ready(function(){
                 $('#remarks').text('Remarks: Congratulation you have passed').css('color','#20a86a');
             }
             else{
-                $('#remarks').text('Remarks: Sorry you have failed').css('color','#eb422f');
+                $('#remarks').text('Remarks: Sorry you have failed').css('color','red');
             }
             $('#remarks').show();
             $('#finalscore').text('Your final Score: '+ score + ' out of ' + index);
