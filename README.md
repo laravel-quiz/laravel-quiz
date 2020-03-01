@@ -35,6 +35,10 @@ Things that need to be done after pulling from the github:
         php artisan queue:table ///job migration banaucha
         php artisan migrate
 
-8. Laravel Email
-    -run the following command in sequence :
+8. Laravel Excel
+    -run the following command :
         composer require maatwebsite/excel
+
+9. Laravel Dompdf
+    -run the following command :
+        composer require barryvdh/laravel-dompdf
