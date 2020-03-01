@@ -13,6 +13,9 @@
 
                     </div>
                 </div>
+                <div class="row justify-content-center">
+                    <h1 id="remarks">Remarks:</h1>
+                </div>
                 <div id="quiz" class="row justify-content-center">
                     <div class="col-2 .container-fluid" id="col1"><h1>Q.N</h1><h1 id="question_no"></h1></div>
                     <div class="col-8 .container-fluid"><h1 id="finalscore"></h1><h1 id="question"></h1></div>
@@ -34,6 +37,7 @@
 <script type="text/javascript">
 $(document).ready(function(){
     $('#replay').hide();
+    $('#remarks').hide();
     var questions = new Array();
     var question_no = 1;
     var counter = 30;
@@ -77,6 +81,13 @@ $(document).ready(function(){
         var output = '';
         $('#score').text(score);
         if(index>=total){
+            if(score>=minQuestion){
+                $('#remarks').text('Remarks: Congratulation you have passed');
+            }
+            else{
+                $('#remarks').text('Remarks: Sorry you have failed');
+            }
+            $('#remarks').show();
             $('#finalscore').text('Your final Score: '+ score + ' out of ' + index);
             $('#question').hide();
              $('#col1').hide();
