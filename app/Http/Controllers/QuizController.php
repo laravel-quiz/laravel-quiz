@@ -24,9 +24,11 @@ class QuizController extends Controller
     public function getAll(){
         //return new QuizResource(Quiz::find(1));
         $quantity = Setting::where('name','=','question-quantity')->first();
-        
+        $min = Setting::where('name','=','min-correct-question')->first();
         $quizs = Quiz::get()->random($quantity->value);
-        return QuizResource::collection($quizs);
+        return QuizResource::collection($quizs)->additional(['meta' => [
+            'min' => $min->value,
+        ]]);
     }
 
 
@@ -38,7 +40,7 @@ class QuizController extends Controller
                 $user->score = $request->score;
                 // $user->save();
                 //Mail::to($user)->send(new GameScore($user));
-                SendEmailJob::dispatch($user)->delay(now()->addMinutes(1));
+                SendEmailJob::dispatch($user)->delay(now()->addSeconds(15));
             }
 
             // if($request->score == 5)
@@ -48,9 +50,7 @@ class QuizController extends Controller
             //     return $pdf->download('certificate.pdf');
             // }
         }
-        else{
-            $user->score = $request->score;
-        }
+        
 
         $user->save();
         return $user;

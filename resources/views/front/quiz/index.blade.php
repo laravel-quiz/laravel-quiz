@@ -13,6 +13,9 @@
 
                     </div>
                 </div>
+                <div class="row justify-content-center">
+                    <h1 id="remarks">Remarks:</h1>
+                </div>
                 <div id="quiz" class="row justify-content-center">
                     <div class="col-2 .container-fluid" id="col1"><h1>Q.N</h1><h1 id="question_no"></h1></div>
                     <div class="col-8 .container-fluid"><h1 id="finalscore"></h1><h1 id="question"></h1></div>
@@ -42,9 +45,11 @@
 <script type="text/javascript">
 $(document).ready(function(){
     $('#replay').hide();
+    $('#remarks').hide();
     var questions = new Array();
     var question_no = 1;
     var counter = 30;
+    var minQuestion = 0;
     var score = 0;
     var index = 0;
     var total = 0;
@@ -56,12 +61,14 @@ $(document).ready(function(){
     //$('#score').text('Score:'+ score);
      //$.get('https://cors-anywhere.herokuapp.com/https://opentdb.com/api.php?amount=10',function(data){
         $.get("/api/quiz/all",function(data){
-        //console.log(data);
+        
         //var results = data.results;
-        var results = data;
+        console.log(data.meta.min);
+        var results = data.data;
         var output = '';
         var i =0;
-        total = data.length;
+        total = data.data.length;
+        minQuestion = data.meta.min;
         results.forEach(function(quiz){
             questions.push(quiz);
             questions[i].incorrect_answers.push(quiz.correct_answer);
@@ -82,6 +89,13 @@ $(document).ready(function(){
         var output = '';
         $('#score').text(score);
         if(index>=total){
+            if(score>=minQuestion){
+                $('#remarks').text('Remarks: Congratulation you have passed');
+            }
+            else{
+                $('#remarks').text('Remarks: Sorry you have failed');
+            }
+            $('#remarks').show();
             $('#finalscore').text('Your final Score: '+ score + ' out of ' + index);
             $('#question').hide();
              $('#col1').hide();
