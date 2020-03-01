@@ -37,6 +37,7 @@ $(document).ready(function(){
     var questions = new Array();
     var question_no = 1;
     var counter = 30;
+    var minQuestion = 0;
     var score = 0;
     var index = 0;
     var total = 0;
@@ -48,12 +49,14 @@ $(document).ready(function(){
     //$('#score').text('Score:'+ score);
      //$.get('https://cors-anywhere.herokuapp.com/https://opentdb.com/api.php?amount=10',function(data){
         $.get("/api/quiz/all",function(data){
-        //console.log(data);
+        
         //var results = data.results;
-        var results = data;
+        console.log(data.meta.min);
+        var results = data.data;
         var output = '';
         var i =0;
-        total = data.length;
+        total = data.data.length;
+        minQuestion = data.meta.min;
         results.forEach(function(quiz){
             questions.push(quiz);
             questions[i].incorrect_answers.push(quiz.correct_answer);
