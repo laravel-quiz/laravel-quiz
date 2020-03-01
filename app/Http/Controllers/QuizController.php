@@ -11,6 +11,7 @@ use App\Jobs\SendEmailJob;
 use App\Quiz;
 use App\User;
 use PDF;
+use App\Setting;
 
 
 class QuizController extends Controller
