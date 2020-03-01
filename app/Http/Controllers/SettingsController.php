@@ -22,6 +22,6 @@ class SettingsController extends Controller
         $minQuestion->value = $request->min_question;
         $minQuestion->save();
 
-        return redirect()->route('settings.index');
+        return redirect()->route('settings.index')->with('success','Changed Successfully!!!!');
     }
 }
