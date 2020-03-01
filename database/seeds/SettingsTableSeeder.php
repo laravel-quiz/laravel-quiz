@@ -20,6 +20,10 @@ class SettingsTableSeeder extends Seeder
             [
                 'name' => 'color-mode',
                 'value' => 'light',
+            ],
+            [
+                'name' => 'min-correct-question',
+                'value' => '3',
             ]
             
         ]);

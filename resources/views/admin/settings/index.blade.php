@@ -14,7 +14,7 @@
                             @csrf
                             @method('PUT')
                                 <div class="input-group">
-                                    <input type="text" id="quantity" name="quantity" class="form-control" value="{{ $quantity->value }}" min="0" max="100">&nbsp;&nbsp;&nbsp;
+                                    <input type="text" id="quantity" name="quantity" class="form-control" value="{{ $quantity->value }}" min="5" max="100">&nbsp;&nbsp;&nbsp;
                                     <span class="input-group-btn">
                                         <button type="button" class="quantity-left-minus btn btn-danger btn-number" data-type="minus">
                                         <i class="fa fa-minus" style="font-size:26px;"></i>
@@ -27,6 +27,8 @@
                                         </button>
                                     </span>
                                 </div><br>
+                                <label>Set min question to pass</label>
+                                <input type="text" name="min_question" class="form-control" value="{{ $minQuestion->value }}" min="0" max="100">
                                 <button type="submit" class="btn mb-1 btn-rounded btn-default">Save</button>
                             </form>
                         </div>
