@@ -52,7 +52,6 @@
                                         <div class="form-group row">
                                             <div class="col-lg-8 ml-auto">
                                                 <button type="submit" class="btn btn-primary">Submit</button>
-                                            <a href="{{route('upload.question')}}">import</a>
                                             </div>
                                         </div>
                                     </form>
@@ -63,14 +62,14 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="form-validation">
-                                    <form class="form-valide" action="#" method="POST" >
+                                    <form class="form-valide" action="{{route('upload.question')}}" method="POST" enctype="multipart/form-data">
                                         @csrf
-                                    
+
                                         <div class="form-group row">
                                             <label class="col-lg-4 col-form-label" for="val-name">Import From Excel</span>
                                             </label>
                                             <div class="col-lg-6">
-                                                <input type="file" class="" id="val-name" name="incorrect_answer" placeholder="Enter any 3 seperated by commma ','">
+                                                <input type="file" class="" id="val-name" name="question" placeholder="Enter any 3 seperated by commma ','">
                                             </div>
                                         </div>
                                         <div class="form-group row">

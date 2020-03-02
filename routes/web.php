@@ -73,4 +73,4 @@ Route::get('/home', 'HomeController@index')->name('home')->middleware('verified'
 Route::get('/export/excel/recentplayer', 'ExcelController@recentplayer')->name('excel.recentplayer');
 Route::get('/export/excel/topplayer', 'ExcelController@topplayer')->name('excel.topplayer');
 Route::get('/download/certificate', 'QuizController@downloadpdf')->name('download.certificate');
-Route::get('/import/question','ExcelController@upload_question')->name('upload.question');
+Route::post('/import/question','ExcelController@upload_question')->name('upload.question');
