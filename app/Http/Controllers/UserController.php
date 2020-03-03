@@ -10,6 +10,7 @@ use Intervention\Image\Facades\Image;
 use App\User;
 use App\Role;
 use Gate;
+use App\Setting;
 
 
 class UserController extends Controller
@@ -42,7 +43,8 @@ class UserController extends Controller
             return redirect(route('users.index'));
         }
         $roles = Role::get();
-        return view('admin.users.create',compact('roles'));
+        $aspect = Setting::where('name','=','image-ratio')->first();
+        return view('admin.users.create',compact('roles','aspect'));
     }
 
     /**
