@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Hash;
 
 class UsersServices
 {
-
+    protected $imageServices;
     public function __construct(User $user,ImageServices $imageServices)
     {
         $this->user = $user;
@@ -32,7 +32,13 @@ class UsersServices
                 $request['croppedImage'] = $this->imageServices->imageMoveWithName($image);
             }
             $request['password'] = Hash::make($request['password']);
-            return $this->user->create($request);
+            return $this->user->create([
+                'name' => $request['name'],
+                'email' =>$request['email'],
+                'password' => $request['password'],
+                'role_id' => $request['role_id'],
+                'image' => $request['croppedImage'],
+            ]);
         }
         catch(Exception $e)
         {

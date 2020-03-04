@@ -63,11 +63,28 @@ class UserController extends Controller
         // 'password' => ['required', 'string', 'min:8'],
         // 'image' => ['image', 'mimes:jpg,png,jpeg','max:2048']
         // ]);
-
-        if($this->usersServices->store($request->all()))
-        {
-            return redirect()->route('users.index')->with('success','User added successfully');
+        // return $request->file('croppedImage');
+        //dd($request->file('image'));
+        $user = new User();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = Hash::make($request->password);
+        $user->role_id = $request->role_id;
+        if($request->hasFile('croppedImage')){
+            $image = $request->file('croppedImage');
+            $imageName = time().'.'.$image->getClientOriginalExtension();
+            $image->move(public_path('/images/user'),$imageName);
+            //$location = public_path('user/images/'.$imageName);
+            $user->image = $imageName;
         }
+        $user->save();
+        return 'done';
+
+
+        // if($this->usersServices->store($request->all()))
+        // {
+        //     return 'done';
+        // }
     }
 
     /**
@@ -109,6 +126,7 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
+        dd($request);
         if(Gate::denies('edit-user'))
         {
             return redirect(route('users.index'));

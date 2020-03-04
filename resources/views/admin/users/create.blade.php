@@ -183,6 +183,7 @@ var cropper;
 //var formData =  document.getElementById('formElem');
 var allInputs = $(":input");
 var file;
+var fileName;
 
 $("body").on("change", ".image", function(e){
     var files = e.target.files;
@@ -219,6 +220,7 @@ $("body").on("change", ".image", function(e){
 
 $modal.on('shown.bs.modal', function () {
     file = document.querySelector('input[type=file]').files[0];
+    fileName = file.name;
     console.log(file);
     cropper = new Cropper(image, {
 	  aspectRatio: {{$aspect->value}},
@@ -246,20 +248,8 @@ $('#submit').click(function(e){
     formData = new FormData(formElem);
 
     // Pass the image file name as the third parameter if necessary.
-    formData.append('croppedImage', blob/*, 'example.png' */);
+    formData.append('croppedImage', blob,fileName);
 
-    
-    // $.ajax({
-    //         method:'POST',
-    //         url:"{{ route('quiz.updatescore') }}",
-    //         data:{
-    //             score: highscore,
-    //             userid:'{{Auth::user()->id}}'
-    //         },
-    //         success:function(data){
-    //             console.log(data);
-    //         }
-    //     });
 }/*, 'image/png' */);
     e.preventDefault();
     // Use `jQuery.ajax` method for example
