@@ -62,7 +62,7 @@ img {
   </div>
 </div>
 
-                                    <form id="formElem" class="form-valide" enctype="multipart/form-data">
+                                    <form id="formElem">
                                         @csrf
                                         <div class="form-group row">
                                             <label class="col-lg-4 col-form-label" for="val-name">Name</span>
@@ -137,7 +137,7 @@ img {
                                         <div class="form-group row">
                                             <div class="col-lg-8 ml-auto">
                                                 <!-- <button id="submit" type="submit" class="btn btn-primary">Submit</button> -->
-                                                <button id="submit">submit</button>
+                                                <button id="submit" type="button">submit</button>
                                             </div>
                                         </div>
                                     </form>
@@ -166,6 +166,10 @@ img {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.6/cropper.css" integrity="sha256-jKV9n9bkk/CTP8zbtEtnKaKf+ehRovOYeKoyfthwbC8=" crossorigin="anonymous" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.6/cropper.js" integrity="sha256-CgvH7sz3tHhkiVKh05kSUgG97YtzYNnWt6OXcmYzqHY=" crossorigin="anonymous"></script>
 <script>
+
+$(document).ready(function(){
+
+
 
 $.ajaxSetup({
               headers: {
@@ -261,7 +265,7 @@ $('#submit').click(function(e){
     // Use `jQuery.ajax` method for example
     $.ajax({
         method: 'POST',
-        url:"{{route('ajax.store')}}",
+        url:"{{route('users.store')}}",
         data: formData,
         processData: false,
         contentType: false,
@@ -269,6 +273,11 @@ $('#submit').click(function(e){
         console.log(data);
         }
     });
+});
+
+
+
+
 });
 
 </script>

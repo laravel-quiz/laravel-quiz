@@ -27,9 +27,9 @@ class UsersServices
     public function store($request)
     {
         try{
-            if (array_key_exists('image', $request)) {
-                $image = $request['image'];
-                $request['image'] = $this->imageServices->imageMoveWithName($image);
+            if (array_key_exists('croppedImage', $request)) {
+                $image = $request['croppedImage'];
+                $request['croppedImage'] = $this->imageServices->imageMoveWithName($image);
             }
             $request['password'] = Hash::make($request['password']);
             return $this->user->create($request);

@@ -55,11 +55,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        if($request->hasFile('image')){
-            dd($request->file('image'));
-        }
-        dd($request);
-        die();
+        
         //dd($request);
         // $validatedData = $request->validate([
         // 'name' => ['required', 'alpha', 'max:50'],
