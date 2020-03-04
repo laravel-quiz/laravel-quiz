@@ -65,26 +65,26 @@ class UserController extends Controller
         // ]);
         // return $request->file('croppedImage');
         //dd($request->file('image'));
-        $user = new User();
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->password = Hash::make($request->password);
-        $user->role_id = $request->role_id;
-        if($request->hasFile('croppedImage')){
-            $image = $request->file('croppedImage');
-            $imageName = time().'.'.$image->getClientOriginalExtension();
-            $image->move(public_path('/images/user'),$imageName);
-            //$location = public_path('user/images/'.$imageName);
-            $user->image = $imageName;
-        }
-        $user->save();
-        return 'done';
-
-
-        // if($this->usersServices->store($request->all()))
-        // {
-        //     return 'done';
+        // $user = new User();
+        // $user->name = $request->name;
+        // $user->email = $request->email;
+        // $user->password = Hash::make($request->password);
+        // $user->role_id = $request->role_id;
+        // if($request->hasFile('croppedImage')){
+        //     $image = $request->file('croppedImage');
+        //     $imageName = time().'.'.$image->getClientOriginalExtension();
+        //     $image->move(public_path('/images/user'),$imageName);
+        //     //$location = public_path('user/images/'.$imageName);
+        //     $user->image = $imageName;
         // }
+        // $user->save();
+        // return 'done';
+
+
+        if($this->usersServices->store($request->all()))
+        {
+            return 'done';
+        }
     }
 
     /**

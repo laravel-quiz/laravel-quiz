@@ -170,8 +170,7 @@ img {
 $(document).ready(function(){
 
 
-
-$.ajaxSetup({
+    $.ajaxSetup({
               headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
               }
@@ -261,7 +260,8 @@ $('#submit').click(function(e){
         contentType: false,
         success:function(data) {
         console.log(data);
-        }
+        },
+        async: false,
     });
 });
 
