@@ -55,12 +55,18 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-        'name' => ['required', 'alpha', 'max:50'],
-        'email' => ['required', 'email', 'max:255','unique:App\User'],
-        'password' => ['required', 'string', 'min:8'],
-        'image' => ['image', 'mimes:jpg,png,jpeg','max:2048']
-        ]);
+        if($request->hasFile('image')){
+            dd($request->file('image'));
+        }
+        dd($request);
+        die();
+        //dd($request);
+        // $validatedData = $request->validate([
+        // 'name' => ['required', 'alpha', 'max:50'],
+        // 'email' => ['required', 'email', 'max:255','unique:App\User'],
+        // 'password' => ['required', 'string', 'min:8'],
+        // 'image' => ['image', 'mimes:jpg,png,jpeg','max:2048']
+        // ]);
 
         if($this->usersServices->store($request->all()))
         {
