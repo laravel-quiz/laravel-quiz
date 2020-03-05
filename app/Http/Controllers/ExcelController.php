@@ -51,10 +51,7 @@ class ExcelController extends Controller
         //
         $path = public_path('file/'. $file->getClientOriginalName());
 
-        $temp =explode('.',$path);
-        $ext = end($temp);
-
-             $rows = Excel::toArray(new QuestionImport, $path);
+        $rows = Excel::toArray(new QuestionImport, $path);
 
          //$quiz = new Quiz();
 
