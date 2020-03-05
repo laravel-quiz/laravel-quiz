@@ -183,6 +183,7 @@ var cropper;
 var allInputs = $(":input");
 var file;
 var fileName;
+var formData;
 
 $("body").on("change", ".image", function(e){
     var files = e.target.files;
@@ -232,7 +233,7 @@ $modal.on('shown.bs.modal', function () {
 });
 
 
-var formData;
+
 $("#crop").click(function(){
 
     
@@ -248,10 +249,8 @@ $('#submit').click(function(e){
 
     // Pass the image file name as the third parameter if necessary.
     formData.append('croppedImage', blob,fileName);
+    console.log(formData);
 
-}/*, 'image/png' */);
-    e.preventDefault();
-    // Use `jQuery.ajax` method for example
     $.ajax({
         method: 'POST',
         url:"{{route('users.store')}}",
@@ -259,10 +258,18 @@ $('#submit').click(function(e){
         processData: false,
         contentType: false,
         success:function(data) {
-        console.log(data);
+            console.log(data);
+            window.location.href = "{{route('users.index')}}"
         },
         async: false,
     });
+    
+
+}/*, 'image/png' */);
+    //e.preventDefault();
+    
+    // Use `jQuery.ajax` method for example
+    
 });
 
 

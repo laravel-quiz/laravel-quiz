@@ -65,6 +65,9 @@ class UserController extends Controller
         // ]);
         // return $request->file('croppedImage');
         //dd($request->file('image'));
+
+        
+
         // $user = new User();
         // $user->name = $request->name;
         // $user->email = $request->email;
