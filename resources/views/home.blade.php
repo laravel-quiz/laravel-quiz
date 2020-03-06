@@ -9,7 +9,7 @@
                 <div class="row justify-content-center title">
                     <img src="{{asset('/images/quiz.png')}}" class="img-responsive">
                 </div>
-
+                
                 {{-- <div class="row justify-content-center">
                     <div class="col-2 .container-fluid"><h3>Play</h3></div>
                     <div class="col-2 .container-fluid"><h3>LogOut</h3></div>

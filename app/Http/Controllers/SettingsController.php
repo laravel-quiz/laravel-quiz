@@ -24,4 +24,14 @@ class SettingsController extends Controller
 
         return redirect()->route('settings.index')->with('success','Changed Successfully!!!!');
     }
+
+    public function setting()
+    {
+        return view('front.settings.setting');
+    }
+
+    public function UploadImage()
+    {
+        return view ('front.settings.uploadimage');
+    }
 }

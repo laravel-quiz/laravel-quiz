@@ -74,6 +74,8 @@ Route::get('/export/excel/recentplayer', 'ExcelController@recentplayer')->name('
 Route::get('/export/excel/topplayer', 'ExcelController@topplayer')->name('excel.topplayer');
 Route::get('/download/certificate', 'QuizController@downloadpdf')->name('download.certificate');
 Route::post('/import/question','ExcelController@upload_question')->name('upload.question');
+Route::get('/setting','SettingsController@setting')->name("user.setting");
+Route::get('/setting/image','SettingsController@UploadImage')->name('user.image');
 
 
 Route::post('/ajax/store','AjaxController@store')->name('ajax.store');
