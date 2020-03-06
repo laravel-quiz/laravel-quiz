@@ -17,6 +17,7 @@
     <!--**********************************
         Scripts
     ***********************************-->
+    @yield('scripts')
     <script src="{{ asset('plugins/common/common.min.js') }}"></script>
     <script src="{{ asset('js/custom.min.js') }}"></script>
     <script src="{{ asset('js/settings.js') }}"></script>
