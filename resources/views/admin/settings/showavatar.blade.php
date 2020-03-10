@@ -167,6 +167,7 @@ $("#update").click(function(){
             contentType: false,
             success:function(data) {
                 console.log(data);
+                window.location.href = "{{route('admin.index')}}"
             },
             async: false,
         });

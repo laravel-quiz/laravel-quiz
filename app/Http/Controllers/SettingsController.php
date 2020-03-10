@@ -40,13 +40,13 @@ class SettingsController extends Controller
     public function updateAvatar(Request $request){
         $temp = 'dfsdf';
         
-        if (array_key_exists('croppedImage', $request)) {
+        if (array_key_exists('croppedImage', $request->all())) {
             $image = $request['croppedImage'];
             $temp = $this->imageServices->imageMoveWithName($image);
         }
-        return $temp;
+        
         $user = User::find($request['userid']);
-        $user->image = $request['croppedImage'];
+        $user->image = $temp;
         $user->save();
         
         
