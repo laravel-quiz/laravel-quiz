@@ -42,6 +42,9 @@ Route::middleware(['auth','role'])->prefix('/admin')->group(function(){
     Route::get('/settings','SettingsController@index')->name('settings.index');
     Route::put('/settings/update','SettingsController@update')->name('settings.update');
 
+    Route::get('/avatar','SettingsController@showAvatar')->name('admin.showavatar');
+    Route::post('/avatar','SettingsController@updateAvatar')->name('admin.updateavatar');
+
     Route::get('/incorrectanswer','IncorrectAnswerController@index')->name('incorrectanswer');
     Route::get('/incorrectanswer/create','IncorrectAnswerController@create')->name('incorrectanswer.create');
     Route::post('/incorrectanswer/store','IncorrectAnswerController@store')->name('incorrectanswer.store');

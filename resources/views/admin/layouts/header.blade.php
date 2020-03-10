@@ -228,6 +228,9 @@
                                             <a href="{{ route('settings.index') }}"><i class="fa fa-cog"></i> <span> Settings</span></a>
                                         </li>
                                         <li>
+                                            <a href="{{route('admin.showavatar')}}"><i class="fa fa-cog"></i> <span>Avatar</span></a>
+                                        </li>
+                                        <li>
                                             <a href="javascript:void()">
                                                 <i class="icon-envelope-open"></i> <span>Inbox</span> <div class="badge gradient-3 badge-pill gradient-1">3</div>
                                             </a>
