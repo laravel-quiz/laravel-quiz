@@ -121,16 +121,6 @@ img {
   function triggerClick(){
     document.querySelector('#profileImage').click();;
   }
-  function displayImage(){
-    if(e.files[0]){
-      var reader = new FileReader();
-
-      reader.onload = function(e){
-        document.queryselector('#profileDisplay').setAttribute('src'.e.target.result);
-      }
-      reader.readAsDataURL(e.files[0]);
-    }
-  }
   
 </script>
 <script>
@@ -180,7 +170,7 @@ $modal.on('shown.bs.modal', function () {
     file = document.querySelector('input[type=file]').files[0];
     fileName = file.name;
     cropper = new Cropper(image, {
-	  aspectRatio: 1,
+	  aspectRatio: {{$aspect->value}},
 	  viewMode: 3,
 	  preview: '.preview'
     });

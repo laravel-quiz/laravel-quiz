@@ -80,13 +80,13 @@ img {
     @method('PUT')
     <div class="form-group" >
     @if (Auth::user()->image != null)
-      <img class="imageChange" src="{{asset('images/users/'.Auth::user()->image)}}" onclick="triggerClick()" id = "profileDisplay">                                         
+      <img  src="{{asset('images/users/'.Auth::user()->image)}}" onclick="triggerClick()"  id = "profileDisplay">                                         
     @else
-    <img class="imageChange" src="{{asset('images/avatar.png')}}" onclick="triggerClick()" id = "profileDisplay">
+    <img  src="{{asset('images/avatar.png')}}" onclick="triggerClick()" id = "profileDisplay">
     @endif
   <h4>{{Auth::user()->name}}</h4>
         
-        <input type="file" class="image" onchange="displayImage(this)" id="profileImage" style="display: none;" class="form-control">
+        <input type="file" class="image" onchange="displayImage(this)" id="profileImage" style="" class="form-control">
         <!-- <img id="blah" src="#" alt="your image" /> -->
         
     </div>
@@ -117,16 +117,6 @@ img {
       function triggerClick(){
         document.querySelector('#profileImage').click();;
       }
-      function displayImage(){
-        if(e.files[0]){
-          var reader = new FileReader();
-    
-          reader.onload = function(e){
-            document.queryselector('#profileDisplay').setAttribute('src'.e.target.result);
-          }
-          reader.readAsDataURL(e.files[0]);
-        }
-      }
       
     </script>
 <script>
@@ -145,6 +135,7 @@ var image = document.getElementById('image');
 var cropper;
 var file;
 var fileName;
+
   
 $("body").on("change", ".image", function(e){
     var files = e.target.files;
@@ -175,7 +166,7 @@ $modal.on('shown.bs.modal', function () {
     file = document.querySelector('input[type=file]').files[0];
     fileName = file.name;
     cropper = new Cropper(image, {
-	  aspectRatio: 1,
+	  aspectRatio: {{$aspect->value}},
 	  viewMode: 3,
 	  preview: '.preview'
     });

@@ -39,7 +39,8 @@ class SettingsController extends Controller
 
 
     public function showAvatar(){
-        return view('admin.settings.showavatar');
+        $aspect = Setting::where('name','=','image-ratio')->first();
+        return view('admin.settings.showavatar',compact('aspect'));
     }
 
 
@@ -50,7 +51,6 @@ class SettingsController extends Controller
             $image = $request['croppedImage'];
             $temp = $this->imageServices->imageMoveWithName($image);
         }
-
         $user = User::find($request['userid']);
         $user->image = $temp;
         $user->save();
@@ -67,7 +67,8 @@ class SettingsController extends Controller
     public function displayAvatar()
     {
         $data = '';
-        return view('front.settings.imageupload',compact('data'));
+        $aspect = Setting::where('name','=','image-ratio')->first();
+        return view('front.settings.imageupload',compact('data','aspect'));
     }
     public function uploadAvatar( Request $request)
     {
