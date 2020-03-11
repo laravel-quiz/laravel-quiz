@@ -1,4 +1,4 @@
-@extends('admin.layouts.master')
+@extends('layouts.app')
 
 @section('stylesheets')
 <link rel="stylesheet" href="{{asset('/css/cropper.min.css')}}">
@@ -19,20 +19,21 @@ img {
 .modal-lg{
   max-width: 1000px !important;
 }
-.form-div
-{
-  margin: 10px auto;
-  border: 2px solid #0e0e0e;
-  padding-top: 15px;
-  border-radius: 12.5%;
-}
 #profileDisplay{
   display: block;
   width: 60%;
   margin: 10px auto;
   border-radius: 50%;
 }
+.form-div{
+  margin-top: 10px;
+  border: 2px solid #e0e0e0;
+  padding-top: 15px;
+  border-radius: 12.5%;
+}
 
+
+}
 </style>
 @endsection
 
@@ -72,29 +73,31 @@ img {
   </div>
 </div>
                 
-<div class="col-4 offset-md-4 form-div" style=" text-align: center;">
+                    
                 
-  <h1>Avatar</h1>
-    <form>
-    @csrf
-    @method('PUT')
-    <div class="form-group" >
-    @if (Auth::user()->image != null)
-      <img class="imageChange" src="{{asset('images/users/'.Auth::user()->image)}}" onclick="triggerClick()" id = "profileDisplay">                                         
-    @else
-    <img class="imageChange" src="{{asset('images/avatar.png')}}" onclick="triggerClick()" id = "profileDisplay">
-    @endif
-  <h4>{{Auth::user()->name}}</h4>
-        
-        <input type="file" class="image" onchange="displayImage(this)" id="profileImage" style="display: none;" class="form-control">
-        <!-- <img id="blah" src="#" alt="your image" /> -->
-        
-    </div>
+                <div class="col-4 offset-md-4 form-div" style=" text-align: center;">
+                
+                  <h1>Avatar</h1>
+                    <form>
+                    @csrf
+                    @method('PUT')
+                    <div class="form-group" >
+                    @if (Auth::user()->image != null)
+                      <img class="imageChange" src="{{asset('images/users/'.Auth::user()->image)}}" onclick="triggerClick()" id = "profileDisplay">                                         
+                    @else
+                    <img class="imageChange" src="{{asset('images/avatar.png')}}" onclick="triggerClick()" id = "profileDisplay">
+                    @endif
+                    <h4>{{Auth::user()->name}}</h4>
+                        
+                        <input type="file" class="image" onchange="displayImage(this)" id="profileImage" style="display: none;" class="form-control">
+                        <!-- <img id="blah" src="#" alt="your image" /> -->
+                        
+                    </div>
 
-    <button type="submit" class="btn btn-default">Ok</button>
-
-</form>
-</div> 
+                    <button type="submit" class="btn btn-default">Ok</button>
+		
+	            </form>
+                </div>    
                 
             </div>
             <!-- #/ container -->
@@ -113,23 +116,25 @@ img {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha256-WqU1JavFxSAMcLP2WIOI+GB2zWmShMI82mTpLDcqFUg=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.6/cropper.css" integrity="sha256-jKV9n9bkk/CTP8zbtEtnKaKf+ehRovOYeKoyfthwbC8=" crossorigin="anonymous" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.6/cropper.js" integrity="sha256-CgvH7sz3tHhkiVKh05kSUgG97YtzYNnWt6OXcmYzqHY=" crossorigin="anonymous"></script>
-    <script>
-      function triggerClick(){
-        document.querySelector('#profileImage').click();;
-      }
-      function displayImage(){
-        if(e.files[0]){
-          var reader = new FileReader();
-    
-          reader.onload = function(e){
-            document.queryselector('#profileDisplay').setAttribute('src'.e.target.result);
-          }
-          reader.readAsDataURL(e.files[0]);
-        }
-      }
-      
-    </script>
+
 <script>
+  function triggerClick(){
+    document.querySelector('#profileImage').click();;
+  }
+  function displayImage(){
+    if(e.files[0]){
+      var reader = new FileReader();
+
+      reader.onload = function(e){
+        document.queryselector('#profileDisplay').setAttribute('src'.e.target.result);
+      }
+      reader.readAsDataURL(e.files[0]);
+    }
+  }
+  
+</script>
+<script>
+
 
 $(document).ready(function(){
 
@@ -197,13 +202,13 @@ $("#update").click(function(){
 
         $.ajax({
             method: 'POST',
-            url:"{{route('admin.updateavatar')}}",
+            url:"{{route('user.uploadAvatar')}}",
             data: formData,
             processData: false,
             contentType: false,
             success:function(data) {
                 console.log(data);
-                window.location.href = "{{route('admin.showavatar')}}"
+                window.location.href = "{{route('user.displayAvatar')}}"
             },
             async: false,
         });
