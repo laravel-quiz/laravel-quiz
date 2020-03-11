@@ -30,6 +30,7 @@
                                         </button>
                                     </span>
                                 </div><br>
+
                                 <h1 class="text-white">Set Minimum Question to Pass :</h1>
                                 <div class="input-group">
                                     <input type="text" id="min_question" name="min_question" class="form-control" value="{{ $minQuestion->value }}" min="0" max="100">&nbsp;&nbsp;&nbsp;
@@ -45,6 +46,23 @@
                                         </button>
                                     </span>
                                 </div><br>
+
+                                <h1 class="text-white">Set Aspect Ratio :</h1>
+                                <div class="input-group">
+                                    <input type="text" id="image_ratio" name="image_ratio" class="form-control" value="{{ $imgRatio->value }}" min="0" max="100">&nbsp;&nbsp;&nbsp;
+                                    <span class="input-group-btn">
+                                        <button type="button" class="image_ratio-left-minus btn btn-danger btn-number" data-type="minus">
+                                        <i class="fa fa-minus" style="font-size:26px;"></i>
+                                        </button>
+                                    </span>
+                                    &nbsp;&nbsp;&nbsp;
+                                    <span class="input-group-btn">
+                                        <button type="button" class="image_ratio-right-plus btn btn-success btn-number" data-type="plus">
+                                        <i class="fa fa-plus" style="font-size:26px;"></i>
+                                        </button>
+                                    </span>
+                                </div><br>
+
                                 <button type="submit" id="btnsubmit" class="btn mb-1 btn-rounded btn-default">Save</button>
                             </form>
                         </div>
