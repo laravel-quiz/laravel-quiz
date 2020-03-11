@@ -86,7 +86,7 @@ img {
     @endif
   <h4>{{Auth::user()->name}}</h4>
         
-        <input type="file" class="image" onchange="displayImage(this)" id="profileImage" style="" class="form-control">
+        <input type="file" class="image" onchange="displayImage(this)" id="profileImage" style="display: none;" class="form-control">
         <!-- <img id="blah" src="#" alt="your image" /> -->
         
     </div>
