@@ -19,7 +19,8 @@ class SettingsController extends Controller
     public function index(){
         $quantity = Setting::where('name','=','question-quantity')->first();
         $minQuestion = Setting::where('name','=','min-correct-question')->first();
-        return view('admin.settings.index',compact('quantity','minQuestion'));
+        $imgRatio = Setting::where('name','=','image-ratio')->first();
+        return view('admin.settings.index',compact('quantity','minQuestion','imgRatio'));
     }
 
     public function update(Request $request){
@@ -29,6 +30,9 @@ class SettingsController extends Controller
         $minQuestion = Setting::where('name','=','min-correct-question')->first();
         $minQuestion->value = $request->min_question;
         $minQuestion->save();
+        $imgRatio = Setting::where('name','=','image-ratio')->first();
+        $imgRatio->value = $request->image_ratio;
+        $imgRatio->save();
 
         return redirect()->route('settings.index')->with('success','Changed Successfully!!!!');
     }
@@ -41,17 +45,17 @@ class SettingsController extends Controller
 
     public function updateAvatar(Request $request){
         $temp = 'dfsdf';
-        
+
         if (array_key_exists('croppedImage', $request->all())) {
             $image = $request['croppedImage'];
             $temp = $this->imageServices->imageMoveWithName($image);
         }
-        
+
         $user = User::find($request['userid']);
         $user->image = $temp;
         $user->save();
-        
-        
+
+
         return 'done i guess';
     }
 

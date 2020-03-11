@@ -1,6 +1,5 @@
 $(document).ready(function(){
 
-var quantitiy=0;
    $('.quantity-right-plus').click(function(e){
 
         // Stop acting like a button
@@ -58,6 +57,36 @@ var quantitiy=0;
         // Increment
         if (min_question > 0) {
             $('#min_question').val(min_question - 1);
+        }
+    });
+
+    $('.image_ratio-right-plus').click(function (e) {
+
+        // Stop acting like a button
+        e.preventDefault();
+        // Get the field name
+        var image_ratio = parseInt($('#image_ratio').val());
+
+        // If is not undefined
+
+        $('#image_ratio').val(image_ratio + 1);
+
+
+        // Increment
+
+    });
+
+    $('.image_ratio-left-minus').click(function (e) {
+        // Stop acting like a button
+        e.preventDefault();
+        // Get the field name
+        var image_ratio = parseInt($('#image_ratio').val());
+
+        // If is not undefined
+
+        // Increment
+        if (image_ratio > 0) {
+            $('#image_ratio').val(min_question - 1);
         }
     });
 });
