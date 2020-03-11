@@ -10,8 +10,10 @@ use App\User;
 class SettingsController extends Controller
 {
     protected $imageServices;
-    public function __construct(ImageServices $imageServices){
+    protected $users;
+    public function __construct(ImageServices $imageServices,User $users){
         $this->imageServices = $imageServices;
+        $this->users = $users;
     }
 
     public function index(){
@@ -51,6 +53,31 @@ class SettingsController extends Controller
         
         
         return 'done i guess';
+    }
+
+    public function userSetting()
+    {
+        return view('front.settings.setting');
+    }
+
+    public function displayAvatar()
+    {
+        $data = '';
+        return view('front.settings.imageupload',compact('data'));
+    }
+    public function uploadAvatar( Request $request)
+    {
+        $temp = 'jdufs';
+        if(array_key_exists('croppedImage',$request->all())){
+            $image = $request['croppedImage'];
+            $temp = $this->imageServices->imageMoveWithName($image);
+
+        }
+        //$user = $this->users->getById($request['id']);
+        $user = User::find($request['userid']);
+        $user->image = $temp;
+        $user->save();
+
     }
 
 }
