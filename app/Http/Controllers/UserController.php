@@ -129,7 +129,7 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        dd($request);
+          
         if(Gate::denies('edit-user'))
         {
             return redirect(route('users.index'));
